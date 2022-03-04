@@ -18,7 +18,7 @@ from models.BaseModel import SequentialModel
 
 
 class GRU4Rec(SequentialModel):
-    extra_log_args = ['emb_size', 'hidden_size']
+    extra_log_args = ['emb_size', 'hidden_size', 'time_features']
 
     @staticmethod
     def parse_model_args(parser):
@@ -26,16 +26,33 @@ class GRU4Rec(SequentialModel):
                             help='Size of embedding vectors.')
         parser.add_argument('--hidden_size', type=int, default=64,
                             help='Size of hidden vectors in GRU.')
+        parser.add_argument('--time_features', type=str, default='',
+                            help='Time features to use: hours')
         return SequentialModel.parse_model_args(parser)
 
     def __init__(self, args, corpus):
         self.emb_size = args.emb_size
         self.hidden_size = args.hidden_size
+        self.time_features = [m.strip().upper() for m in args.time_features.split(',')]
+        if self.time_features[0] == '':
+            self.time_features = []
         super().__init__(args, corpus)
 
     def _define_params(self):
         self.i_embeddings = nn.Embedding(self.item_num, self.emb_size)
-        self.rnn = nn.GRU(input_size=self.emb_size, hidden_size=self.hidden_size, batch_first=True)
+        for f in self.time_features:
+            if f == 'HOUR':
+                self.hours_embeddings = nn.Embedding(24, self.emb_size)
+            elif f == 'MONTH':
+                self.months_embeddings = nn.Embedding(12, self.emb_size)
+            elif f == 'DAY':
+                self.days_embeddings = nn.Embedding(31, self.emb_size)
+            elif f == 'WEEKDAY':
+                self.weekdays_embeddings = nn.Embedding(7, self.emb_size)
+            else:
+                raise ValueError('Undefined time feature: {}.'.format(f))
+        
+        self.rnn = nn.GRU(input_size=self.emb_size*(len(self.time_features)+1), hidden_size=self.hidden_size, batch_first=True)
         # self.pred_embeddings = nn.Embedding(self.item_num, self.hidden_size)
         self.out = nn.Linear(self.hidden_size, self.emb_size)
 
@@ -43,9 +60,31 @@ class GRU4Rec(SequentialModel):
         self.check_list = []
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
-        lengths = feed_dict['lengths']  # [batch_size]
-
+        lengths = feed_dict['lengths']
+        hours = feed_dict['history_hours']
+        days = feed_dict['history_days']
+        months = feed_dict['history_months']
+        weekdays = feed_dict['history_weekdays']
+        
+        
         his_vectors = self.i_embeddings(history)
+        for f in self.time_features:
+            if f == 'HOUR':
+                hours_vectors = self.hours_embeddings(hours)
+                his_vectors = torch.cat((his_vectors, hours_vectors), 2)
+            elif f == 'MONTH':
+                months_vectors = self.months_embeddings(months)
+                his_vectors = torch.cat((his_vectors, months_vectors), 2)
+            elif f == 'DAY':
+                days_vectors = self.days_embeddings(days)
+                his_vectors = torch.cat((his_vectors, days_vectors), 2)
+            elif f == 'WEEKDAY':
+                weekdays_vectors = self.weekdays_embeddings(weekdays)
+                his_vectors = torch.cat((his_vectors, weekdays_vectors), 2)
+            else:
+                raise ValueError('Undefined time feature: {}.'.format(f))
+            
+        
 
         # Sort and Pack
         sort_his_lengths, sort_idx = torch.topk(lengths, k=len(lengths))

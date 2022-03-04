@@ -9,6 +9,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset as BaseDataset
 from torch.nn.utils.rnn import pad_sequence
 from typing import NoReturn, List
+from datetime import datetime
 
 from utils import utils
 from helpers.BaseReader import BaseReader
@@ -113,7 +114,7 @@ class BaseModel(nn.Module):
             self.buffer_dict = dict()
             self.buffer = self.model.buffer and self.phase != 'train'
             self.data = utils.df_to_dict(corpus.data_df[phase])
-            # ↑ DataFrame is not compatible with multi-thread operations
+            # â†‘ DataFrame is not compatible with multi-thread operations
 
             self._prepare()
 
@@ -193,7 +194,7 @@ class GeneralModel(BaseModel):
         loss = -((pos_pred[:, None] - neg_pred).sigmoid() * neg_softmax).sum(dim=1).log().mean()
         # neg_pred = (neg_pred * neg_softmax).sum(dim=1)
         # loss = F.softplus(-(pos_pred - neg_pred)).mean()
-        # ↑ For numerical stability, we use 'softplus(-x)' instead of '-log_sigmoid(x)'
+        # â†‘ For numerical stability, we use 'softplus(-x)' instead of '-log_sigmoid(x)'
         return loss
 
     class Dataset(BaseModel.Dataset):
@@ -203,7 +204,7 @@ class GeneralModel(BaseModel):
                 neg_items = np.arange(1, self.corpus.n_items)
             else:
                 neg_items = self.data['neg_items'][index]
-            item_ids = np.concatenate([[target_item], neg_items]).astype(int)
+            item_ids = np.concatenate([[target_item], neg_items])
             feed_dict = {
                 'user_id': user_id,
                 'item_id': item_ids
@@ -248,5 +249,9 @@ class SequentialModel(GeneralModel):
                 user_seq = user_seq[-self.model.history_max:]
             feed_dict['history_items'] = np.array([x[0] for x in user_seq])
             feed_dict['history_times'] = np.array([x[1] for x in user_seq])
+            feed_dict['history_hours'] = np.array([datetime.fromtimestamp(x[1]).hour for x in user_seq])
+            feed_dict['history_days'] = np.array([datetime.fromtimestamp(x[1]).day - 1 for x in user_seq])
+            feed_dict['history_months'] = np.array([datetime.fromtimestamp(x[1]).month - 1 for x in user_seq])
+            feed_dict['history_weekdays'] = np.array([datetime.fromtimestamp(x[1]).weekday() for x in user_seq])
             feed_dict['lengths'] = len(feed_dict['history_items'])
             return feed_dict

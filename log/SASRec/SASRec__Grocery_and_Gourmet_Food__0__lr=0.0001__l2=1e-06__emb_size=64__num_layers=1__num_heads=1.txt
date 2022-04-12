@@ -1,0 +1,1723 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 18:50:40 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 580096
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6157 [17.9 s]    dev=(HR@5:0.2445,NDCG@5:0.1592) [1.5 s] *
+INFO:root:Epoch 2     loss=0.5008 [18.2 s]    dev=(HR@5:0.2471,NDCG@5:0.1610) [1.4 s] *
+INFO:root:Epoch 3     loss=0.4538 [18.4 s]    dev=(HR@5:0.2507,NDCG@5:0.1637) [1.5 s] *
+INFO:root:Epoch 4     loss=0.4282 [18.2 s]    dev=(HR@5:0.2590,NDCG@5:0.1706) [1.5 s] *
+INFO:root:Epoch 5     loss=0.4061 [18.0 s]    dev=(HR@5:0.2765,NDCG@5:0.1834) [1.4 s] *
+INFO:root:Epoch 6     loss=0.3862 [18.0 s]    dev=(HR@5:0.2971,NDCG@5:0.1987) [1.4 s] *
+INFO:root:Epoch 7     loss=0.3679 [18.3 s]    dev=(HR@5:0.3133,NDCG@5:0.2115) [1.4 s] *
+INFO:root:Epoch 8     loss=0.3507 [18.0 s]    dev=(HR@5:0.3273,NDCG@5:0.2216) [1.4 s] *
+INFO:root:Epoch 9     loss=0.3338 [17.9 s]    dev=(HR@5:0.3390,NDCG@5:0.2303) [1.4 s] *
+INFO:root:Epoch 10    loss=0.3202 [17.9 s]    dev=(HR@5:0.3460,NDCG@5:0.2387) [1.4 s] *
+INFO:root:Epoch 11    loss=0.3052 [17.8 s]    dev=(HR@5:0.3565,NDCG@5:0.2469) [1.4 s] *
+INFO:root:Epoch 12    loss=0.2916 [17.9 s]    dev=(HR@5:0.3670,NDCG@5:0.2545) [1.4 s] *
+INFO:root:Epoch 13    loss=0.2790 [17.9 s]    dev=(HR@5:0.3752,NDCG@5:0.2613) [1.4 s] *
+INFO:root:Epoch 14    loss=0.2662 [18.1 s]    dev=(HR@5:0.3836,NDCG@5:0.2685) [1.4 s] *
+INFO:root:Epoch 15    loss=0.2543 [18.1 s]    dev=(HR@5:0.3932,NDCG@5:0.2786) [1.5 s] *
+INFO:root:Epoch 16    loss=0.2414 [17.9 s]    dev=(HR@5:0.3959,NDCG@5:0.2817) [1.4 s] *
+INFO:root:Epoch 17    loss=0.2301 [17.9 s]    dev=(HR@5:0.4022,NDCG@5:0.2896) [1.4 s] *
+INFO:root:Early stop manually
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 18:59:04 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 644942
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=129, bias=True)
+      (linear2): Linear(in_features=129, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 19:00:48 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 19:01:07 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 19:01:25 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 628107
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 19:02:25 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 590017
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=129, bias=True)
+      (linear2): Linear(in_features=129, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 19:04:07 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581632
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:11:23 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:12:12 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:12:57 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:14:39 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:17:39 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:19:16 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:21:56 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:23:34 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581440
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:45:27 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 5,10,20,50          
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 580096
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6157 [18.1 s]    dev=(HR@5:0.2445,NDCG@5:0.1592) [1.4 s] *
+INFO:root:Epoch 2     loss=0.5008 [18.1 s]    dev=(HR@5:0.2471,NDCG@5:0.1610) [1.4 s] *
+INFO:root:Early stop manually
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:46:35 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581632
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:47:32 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581632
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:56:35 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581632
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 20:58:35 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 594242
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 21:01:51 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 581632
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 21:09:42 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 628107
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 21:11:37 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1194517
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 129)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 21:14:45 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1752213
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 129)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.5567 [19.3 s]    dev=(HR@1:0.0768,MNAP@1:0.0768,NDCG@1:0.0768) [1.5 s] *
+INFO:root:Epoch 2     loss=0.4549 [19.4 s]    dev=(HR@1:0.0772,MNAP@1:0.0772,NDCG@1:0.0772) [1.5 s] *
+INFO:root:Epoch 3     loss=0.4364 [19.4 s]    dev=(HR@1:0.0824,MNAP@1:0.0824,NDCG@1:0.0824) [1.5 s] *
+INFO:root:Epoch 4     loss=0.4106 [24.2 s]    dev=(HR@1:0.0989,MNAP@1:0.0989,NDCG@1:0.0989) [1.5 s] *
+INFO:root:Epoch 5     loss=0.3699 [19.8 s]    dev=(HR@1:0.1100,MNAP@1:0.1100,NDCG@1:0.1100) [1.5 s] *
+INFO:root:Epoch 6     loss=0.3350 [20.0 s]    dev=(HR@1:0.1156,MNAP@1:0.1156,NDCG@1:0.1156) [1.6 s] *
+INFO:root:Epoch 7     loss=0.3034 [19.7 s]    dev=(HR@1:0.1247,MNAP@1:0.1247,NDCG@1:0.1247) [1.5 s] *
+INFO:root:Epoch 8     loss=0.2751 [19.7 s]    dev=(HR@1:0.1383,MNAP@1:0.1383,NDCG@1:0.1383) [1.5 s] *
+INFO:root:Epoch 9     loss=0.2485 [19.2 s]    dev=(HR@1:0.1477,MNAP@1:0.1477,NDCG@1:0.1477) [1.5 s] *
+INFO:root:Epoch 10    loss=0.2255 [19.6 s]    dev=(HR@1:0.1555,MNAP@1:0.1555,NDCG@1:0.1555) [1.5 s] *
+INFO:root:Epoch 11    loss=0.2027 [19.5 s]    dev=(HR@1:0.1614,MNAP@1:0.1614,NDCG@1:0.1614) [1.5 s] *
+INFO:root:Epoch 12    loss=0.1830 [19.6 s]    dev=(HR@1:0.1679,MNAP@1:0.1679,NDCG@1:0.1679) [1.5 s] *
+INFO:root:Epoch 13    loss=0.1649 [19.7 s]    dev=(HR@1:0.1691,MNAP@1:0.1691,NDCG@1:0.1691) [1.5 s] *
+INFO:root:Epoch 14    loss=0.1490 [19.7 s]    dev=(HR@1:0.1707,MNAP@1:0.1707,NDCG@1:0.1707) [1.5 s] *
+INFO:root:Epoch 15    loss=0.1359 [19.6 s]    dev=(HR@1:0.1771,MNAP@1:0.1771,NDCG@1:0.1771) [1.5 s] *
+INFO:root:Epoch 16    loss=0.1217 [19.4 s]    dev=(HR@1:0.1800,MNAP@1:0.1800,NDCG@1:0.1800) [1.5 s] *
+INFO:root:Epoch 17    loss=0.1102 [19.4 s]    dev=(HR@1:0.1811,MNAP@1:0.1811,NDCG@1:0.1811) [1.5 s] *
+INFO:root:Epoch 18    loss=0.1003 [19.3 s]    dev=(HR@1:0.1807,MNAP@1:0.1807,NDCG@1:0.1807) [1.5 s]
+INFO:root:Epoch 19    loss=0.0913 [19.3 s]    dev=(HR@1:0.1855,MNAP@1:0.1855,NDCG@1:0.1855) [1.5 s] *
+INFO:root:Epoch 20    loss=0.0831 [19.2 s]    dev=(HR@1:0.1882,MNAP@1:0.1882,NDCG@1:0.1882) [1.5 s] *
+INFO:root:Epoch 21    loss=0.0750 [19.2 s]    dev=(HR@1:0.1908,MNAP@1:0.1908,NDCG@1:0.1908) [1.5 s] *
+INFO:root:Epoch 22    loss=0.0689 [19.2 s]    dev=(HR@1:0.1918,MNAP@1:0.1918,NDCG@1:0.1918) [1.5 s] *
+INFO:root:Epoch 23    loss=0.0639 [19.2 s]    dev=(HR@1:0.1932,MNAP@1:0.1932,NDCG@1:0.1932) [1.5 s] *
+INFO:root:Epoch 24    loss=0.0578 [19.1 s]    dev=(HR@1:0.1941,MNAP@1:0.1941,NDCG@1:0.1941) [1.5 s] *
+INFO:root:Epoch 25    loss=0.0529 [19.2 s]    dev=(HR@1:0.1983,MNAP@1:0.1983,NDCG@1:0.1983) [1.5 s] *
+INFO:root:Epoch 26    loss=0.0490 [19.3 s]    dev=(HR@1:0.1958,MNAP@1:0.1958,NDCG@1:0.1958) [1.5 s]
+INFO:root:Epoch 27    loss=0.0456 [19.3 s]    dev=(HR@1:0.1949,MNAP@1:0.1949,NDCG@1:0.1949) [1.5 s]
+INFO:root:Epoch 28    loss=0.0417 [19.3 s]    dev=(HR@1:0.1980,MNAP@1:0.1980,NDCG@1:0.1980) [1.5 s]
+INFO:root:Epoch 29    loss=0.0389 [19.0 s]    dev=(HR@1:0.2004,MNAP@1:0.2004,NDCG@1:0.2004) [1.5 s] *
+INFO:root:Epoch 30    loss=0.0357 [19.0 s]    dev=(HR@1:0.2026,MNAP@1:0.2026,NDCG@1:0.2026) [1.5 s] *
+INFO:root:Epoch 31    loss=0.0334 [19.0 s]    dev=(HR@1:0.2027,MNAP@1:0.2027,NDCG@1:0.2027) [1.5 s] *
+INFO:root:Epoch 32    loss=0.0317 [19.1 s]    dev=(HR@1:0.2017,MNAP@1:0.2017,NDCG@1:0.2017) [1.5 s]
+INFO:root:Epoch 33    loss=0.0288 [19.1 s]    dev=(HR@1:0.2020,MNAP@1:0.2020,NDCG@1:0.2020) [1.5 s]
+INFO:root:Epoch 34    loss=0.0277 [19.4 s]    dev=(HR@1:0.2067,MNAP@1:0.2067,NDCG@1:0.2067) [1.5 s] *
+INFO:root:Epoch 35    loss=0.0258 [19.9 s]    dev=(HR@1:0.2047,MNAP@1:0.2047,NDCG@1:0.2047) [1.5 s]
+INFO:root:Epoch 36    loss=0.0237 [19.8 s]    dev=(HR@1:0.2041,MNAP@1:0.2041,NDCG@1:0.2041) [1.6 s]
+INFO:root:Epoch 37    loss=0.0232 [19.8 s]    dev=(HR@1:0.2067,MNAP@1:0.2067,NDCG@1:0.2067) [1.6 s]
+INFO:root:Epoch 38    loss=0.0223 [19.7 s]    dev=(HR@1:0.2051,MNAP@1:0.2051,NDCG@1:0.2051) [1.5 s]
+INFO:root:Epoch 39    loss=0.0206 [19.4 s]    dev=(HR@1:0.2017,MNAP@1:0.2017,NDCG@1:0.2017) [1.5 s]
+INFO:root:Epoch 40    loss=0.0196 [19.4 s]    dev=(HR@1:0.2067,MNAP@1:0.2067,NDCG@1:0.2067) [1.5 s]
+INFO:root:Epoch 41    loss=0.0185 [19.3 s]    dev=(HR@1:0.2075,MNAP@1:0.2075,NDCG@1:0.2075) [1.5 s] *
+INFO:root:Epoch 42    loss=0.0171 [19.5 s]    dev=(HR@1:0.2054,MNAP@1:0.2054,NDCG@1:0.2054) [1.5 s]
+INFO:root:Epoch 43    loss=0.0172 [19.5 s]    dev=(HR@1:0.2048,MNAP@1:0.2048,NDCG@1:0.2048) [1.5 s]
+INFO:root:Epoch 44    loss=0.0162 [19.7 s]    dev=(HR@1:0.2095,MNAP@1:0.2095,NDCG@1:0.2095) [1.5 s] *
+INFO:root:Epoch 45    loss=0.0154 [19.7 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 46    loss=0.0152 [19.3 s]    dev=(HR@1:0.2090,MNAP@1:0.2090,NDCG@1:0.2090) [1.5 s]
+INFO:root:Epoch 47    loss=0.0140 [19.2 s]    dev=(HR@1:0.2075,MNAP@1:0.2075,NDCG@1:0.2075) [1.5 s]
+INFO:root:Epoch 48    loss=0.0142 [19.2 s]    dev=(HR@1:0.2046,MNAP@1:0.2046,NDCG@1:0.2046) [1.5 s]
+INFO:root:Epoch 49    loss=0.0135 [19.3 s]    dev=(HR@1:0.2080,MNAP@1:0.2080,NDCG@1:0.2080) [1.5 s]
+INFO:root:Epoch 50    loss=0.0127 [19.2 s]    dev=(HR@1:0.2087,MNAP@1:0.2087,NDCG@1:0.2087) [1.5 s]
+INFO:root:Epoch 51    loss=0.0123 [19.1 s]    dev=(HR@1:0.2112,MNAP@1:0.2112,NDCG@1:0.2112) [1.5 s] *
+INFO:root:Epoch 52    loss=0.0117 [19.2 s]    dev=(HR@1:0.2028,MNAP@1:0.2028,NDCG@1:0.2028) [1.5 s]
+INFO:root:Epoch 53    loss=0.0121 [19.1 s]    dev=(HR@1:0.2088,MNAP@1:0.2088,NDCG@1:0.2088) [1.5 s]
+INFO:root:Epoch 54    loss=0.0110 [19.1 s]    dev=(HR@1:0.2088,MNAP@1:0.2088,NDCG@1:0.2088) [1.5 s]
+INFO:root:Epoch 55    loss=0.0111 [19.1 s]    dev=(HR@1:0.2027,MNAP@1:0.2027,NDCG@1:0.2027) [1.5 s]
+INFO:root:Epoch 56    loss=0.0109 [19.3 s]    dev=(HR@1:0.2054,MNAP@1:0.2054,NDCG@1:0.2054) [1.5 s]
+INFO:root:Epoch 57    loss=0.0105 [19.0 s]    dev=(HR@1:0.2094,MNAP@1:0.2094,NDCG@1:0.2094) [1.5 s]
+INFO:root:Epoch 58    loss=0.0100 [19.0 s]    dev=(HR@1:0.2093,MNAP@1:0.2093,NDCG@1:0.2093) [1.5 s]
+INFO:root:Epoch 59    loss=0.0098 [19.0 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 60    loss=0.0095 [19.4 s]    dev=(HR@1:0.2090,MNAP@1:0.2090,NDCG@1:0.2090) [1.5 s]
+INFO:root:Epoch 61    loss=0.0089 [19.5 s]    dev=(HR@1:0.2095,MNAP@1:0.2095,NDCG@1:0.2095) [1.5 s]
+INFO:root:Epoch 62    loss=0.0092 [19.4 s]    dev=(HR@1:0.2062,MNAP@1:0.2062,NDCG@1:0.2062) [1.5 s]
+INFO:root:Epoch 63    loss=0.0091 [19.4 s]    dev=(HR@1:0.2065,MNAP@1:0.2065,NDCG@1:0.2065) [1.5 s]
+INFO:root:Epoch 64    loss=0.0086 [19.4 s]    dev=(HR@1:0.2066,MNAP@1:0.2066,NDCG@1:0.2066) [1.5 s]
+INFO:root:Epoch 65    loss=0.0086 [19.1 s]    dev=(HR@1:0.2081,MNAP@1:0.2081,NDCG@1:0.2081) [1.5 s]
+INFO:root:Epoch 66    loss=0.0080 [19.1 s]    dev=(HR@1:0.2105,MNAP@1:0.2105,NDCG@1:0.2105) [1.5 s]
+INFO:root:Epoch 67    loss=0.0088 [19.2 s]    dev=(HR@1:0.2070,MNAP@1:0.2070,NDCG@1:0.2070) [1.5 s]
+INFO:root:Epoch 68    loss=0.0083 [19.1 s]    dev=(HR@1:0.2118,MNAP@1:0.2118,NDCG@1:0.2118) [1.5 s] *
+INFO:root:Epoch 69    loss=0.0080 [19.2 s]    dev=(HR@1:0.2105,MNAP@1:0.2105,NDCG@1:0.2105) [1.5 s]
+INFO:root:Epoch 70    loss=0.0083 [18.9 s]    dev=(HR@1:0.2106,MNAP@1:0.2106,NDCG@1:0.2106) [1.4 s]
+INFO:root:Epoch 71    loss=0.0079 [19.1 s]    dev=(HR@1:0.2107,MNAP@1:0.2107,NDCG@1:0.2107) [1.5 s]
+INFO:root:Epoch 72    loss=0.0082 [19.0 s]    dev=(HR@1:0.2065,MNAP@1:0.2065,NDCG@1:0.2065) [1.5 s]
+INFO:root:Epoch 73    loss=0.0073 [19.1 s]    dev=(HR@1:0.2118,MNAP@1:0.2118,NDCG@1:0.2118) [1.5 s] *
+INFO:root:Epoch 74    loss=0.0074 [19.0 s]    dev=(HR@1:0.2039,MNAP@1:0.2039,NDCG@1:0.2039) [1.6 s]
+INFO:root:Epoch 75    loss=0.0074 [19.0 s]    dev=(HR@1:0.2097,MNAP@1:0.2097,NDCG@1:0.2097) [1.5 s]
+INFO:root:Epoch 76    loss=0.0073 [19.0 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 77    loss=0.0070 [19.0 s]    dev=(HR@1:0.2063,MNAP@1:0.2063,NDCG@1:0.2063) [1.5 s]
+INFO:root:Epoch 78    loss=0.0074 [19.3 s]    dev=(HR@1:0.2050,MNAP@1:0.2050,NDCG@1:0.2050) [1.5 s]
+INFO:root:Epoch 79    loss=0.0066 [19.2 s]    dev=(HR@1:0.2065,MNAP@1:0.2065,NDCG@1:0.2065) [1.5 s]
+INFO:root:Epoch 80    loss=0.0070 [19.3 s]    dev=(HR@1:0.2057,MNAP@1:0.2057,NDCG@1:0.2057) [1.5 s]
+INFO:root:Epoch 81    loss=0.0066 [19.4 s]    dev=(HR@1:0.2054,MNAP@1:0.2054,NDCG@1:0.2054) [1.4 s]
+INFO:root:Epoch 82    loss=0.0068 [19.0 s]    dev=(HR@1:0.2063,MNAP@1:0.2063,NDCG@1:0.2063) [1.5 s]
+INFO:root:Epoch 83    loss=0.0067 [19.1 s]    dev=(HR@1:0.2123,MNAP@1:0.2123,NDCG@1:0.2123) [1.5 s] *
+INFO:root:Epoch 84    loss=0.0065 [18.9 s]    dev=(HR@1:0.2026,MNAP@1:0.2026,NDCG@1:0.2026) [1.5 s]
+INFO:root:Epoch 85    loss=0.0066 [18.9 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 86    loss=0.0062 [19.2 s]    dev=(HR@1:0.2071,MNAP@1:0.2071,NDCG@1:0.2071) [1.5 s]
+INFO:root:Epoch 87    loss=0.0066 [19.3 s]    dev=(HR@1:0.2107,MNAP@1:0.2107,NDCG@1:0.2107) [1.5 s]
+INFO:root:Epoch 88    loss=0.0062 [19.6 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 89    loss=0.0064 [19.3 s]    dev=(HR@1:0.2041,MNAP@1:0.2041,NDCG@1:0.2041) [1.5 s]
+INFO:root:Epoch 90    loss=0.0061 [19.3 s]    dev=(HR@1:0.2102,MNAP@1:0.2102,NDCG@1:0.2102) [1.6 s]
+INFO:root:Epoch 91    loss=0.0066 [19.3 s]    dev=(HR@1:0.2029,MNAP@1:0.2029,NDCG@1:0.2029) [1.5 s]
+INFO:root:Epoch 92    loss=0.0059 [19.3 s]    dev=(HR@1:0.2058,MNAP@1:0.2058,NDCG@1:0.2058) [1.5 s]
+INFO:root:Epoch 93    loss=0.0060 [19.2 s]    dev=(HR@1:0.2069,MNAP@1:0.2069,NDCG@1:0.2069) [1.5 s]
+INFO:root:Epoch 94    loss=0.0061 [19.2 s]    dev=(HR@1:0.2062,MNAP@1:0.2062,NDCG@1:0.2062) [1.5 s]
+INFO:root:Epoch 95    loss=0.0061 [19.1 s]    dev=(HR@1:0.2073,MNAP@1:0.2073,NDCG@1:0.2073) [1.5 s]
+INFO:root:Epoch 96    loss=0.0057 [18.9 s]    dev=(HR@1:0.2087,MNAP@1:0.2087,NDCG@1:0.2087) [1.4 s]
+INFO:root:Epoch 97    loss=0.0056 [18.9 s]    dev=(HR@1:0.2068,MNAP@1:0.2068,NDCG@1:0.2068) [1.5 s]
+INFO:root:Epoch 98    loss=0.0060 [19.3 s]    dev=(HR@1:0.2058,MNAP@1:0.2058,NDCG@1:0.2058) [1.5 s]
+INFO:root:Epoch 99    loss=0.0062 [19.4 s]    dev=(HR@1:0.2031,MNAP@1:0.2031,NDCG@1:0.2031) [1.5 s]
+INFO:root:Epoch 100   loss=0.0055 [19.3 s]    dev=(HR@1:0.2064,MNAP@1:0.2064,NDCG@1:0.2064) [1.5 s]
+INFO:root:Epoch 101   loss=0.0062 [19.2 s]    dev=(HR@1:0.2029,MNAP@1:0.2029,NDCG@1:0.2029) [1.5 s]
+INFO:root:Epoch 102   loss=0.0057 [19.1 s]    dev=(HR@1:0.2033,MNAP@1:0.2033,NDCG@1:0.2033) [1.5 s]
+INFO:root:Epoch 103   loss=0.0052 [18.9 s]    dev=(HR@1:0.2027,MNAP@1:0.2027,NDCG@1:0.2027) [1.4 s]
+INFO:root:Early stop at 103 based on dev result.
+INFO:root:
+Best Iter(dev)=   83	 dev=(HR@1:0.2123,MNAP@1:0.2123,NDCG@1:0.2123) [2146.3 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:0.1833,MNAP@1:0.1833,NDCG@1:0.1833,HR@5:0.3545,MNAP@5:0.5621,NDCG@5:0.2729,HR@10:0.4421,MNAP@10:0.8241,NDCG@10:0.3012,HR@15:0.5030,MNAP@15:1.0101,NDCG@15:0.3173,HR@20:0.5521,MNAP@20:1.1589,NDCG@20:0.3288)
+INFO:root:
+--------------------------------------------- END: 2022-04-07 21:50:37 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 21:50:40 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1750677
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 129)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-07 22:05:17 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1137792
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6086 [17.8 s]    dev=(HR@1:0.0734,MNAP@1:0.0734,NDCG@1:0.0734) [1.4 s] *
+INFO:root:Epoch 2     loss=0.4918 [17.8 s]    dev=(HR@1:0.0751,MNAP@1:0.0751,NDCG@1:0.0751) [1.4 s] *
+INFO:root:Epoch 3     loss=0.4509 [18.2 s]    dev=(HR@1:0.0749,MNAP@1:0.0749,NDCG@1:0.0749) [1.4 s]
+INFO:root:Epoch 4     loss=0.4241 [18.3 s]    dev=(HR@1:0.0786,MNAP@1:0.0786,NDCG@1:0.0786) [1.5 s] *
+INFO:root:Epoch 5     loss=0.3936 [18.4 s]    dev=(HR@1:0.0813,MNAP@1:0.0813,NDCG@1:0.0813) [1.4 s] *
+INFO:root:Epoch 6     loss=0.3698 [18.2 s]    dev=(HR@1:0.0864,MNAP@1:0.0864,NDCG@1:0.0864) [1.4 s] *
+INFO:root:Epoch 7     loss=0.3484 [18.1 s]    dev=(HR@1:0.0892,MNAP@1:0.0892,NDCG@1:0.0892) [1.5 s] *
+INFO:root:Epoch 8     loss=0.3284 [18.2 s]    dev=(HR@1:0.0932,MNAP@1:0.0932,NDCG@1:0.0932) [1.5 s] *
+INFO:root:Epoch 9     loss=0.3069 [18.0 s]    dev=(HR@1:0.0975,MNAP@1:0.0975,NDCG@1:0.0975) [1.4 s] *
+INFO:root:Epoch 10    loss=0.2885 [18.0 s]    dev=(HR@1:0.1025,MNAP@1:0.1025,NDCG@1:0.1025) [1.4 s] *
+INFO:root:Epoch 11    loss=0.2687 [18.0 s]    dev=(HR@1:0.1122,MNAP@1:0.1122,NDCG@1:0.1122) [1.4 s] *
+INFO:root:Epoch 12    loss=0.2499 [18.2 s]    dev=(HR@1:0.1198,MNAP@1:0.1198,NDCG@1:0.1198) [1.4 s] *
+INFO:root:Epoch 13    loss=0.2315 [18.5 s]    dev=(HR@1:0.1281,MNAP@1:0.1281,NDCG@1:0.1281) [1.5 s] *
+INFO:root:Epoch 14    loss=0.2146 [18.4 s]    dev=(HR@1:0.1343,MNAP@1:0.1343,NDCG@1:0.1343) [1.5 s] *
+INFO:root:Epoch 15    loss=0.1988 [18.5 s]    dev=(HR@1:0.1417,MNAP@1:0.1417,NDCG@1:0.1417) [1.4 s] *
+INFO:root:Epoch 16    loss=0.1824 [18.1 s]    dev=(HR@1:0.1482,MNAP@1:0.1482,NDCG@1:0.1482) [1.4 s] *
+INFO:root:Epoch 17    loss=0.1681 [18.0 s]    dev=(HR@1:0.1547,MNAP@1:0.1547,NDCG@1:0.1547) [1.4 s] *
+INFO:root:Epoch 18    loss=0.1553 [18.0 s]    dev=(HR@1:0.1599,MNAP@1:0.1599,NDCG@1:0.1599) [1.4 s] *
+INFO:root:Epoch 19    loss=0.1433 [18.0 s]    dev=(HR@1:0.1607,MNAP@1:0.1607,NDCG@1:0.1607) [1.4 s] *
+INFO:root:Epoch 20    loss=0.1325 [18.1 s]    dev=(HR@1:0.1672,MNAP@1:0.1672,NDCG@1:0.1672) [1.4 s] *
+INFO:root:Epoch 21    loss=0.1210 [18.0 s]    dev=(HR@1:0.1702,MNAP@1:0.1702,NDCG@1:0.1702) [1.4 s] *
+INFO:root:Epoch 22    loss=0.1116 [17.8 s]    dev=(HR@1:0.1759,MNAP@1:0.1759,NDCG@1:0.1759) [1.4 s] *
+INFO:root:Epoch 23    loss=0.1041 [17.9 s]    dev=(HR@1:0.1765,MNAP@1:0.1765,NDCG@1:0.1765) [1.4 s] *
+INFO:root:Epoch 24    loss=0.0942 [17.8 s]    dev=(HR@1:0.1806,MNAP@1:0.1806,NDCG@1:0.1806) [1.4 s] *
+INFO:root:Epoch 25    loss=0.0876 [17.9 s]    dev=(HR@1:0.1830,MNAP@1:0.1830,NDCG@1:0.1830) [1.4 s] *
+INFO:root:Epoch 26    loss=0.0804 [18.1 s]    dev=(HR@1:0.1819,MNAP@1:0.1819,NDCG@1:0.1819) [1.4 s]
+INFO:root:Epoch 27    loss=0.0753 [17.9 s]    dev=(HR@1:0.1808,MNAP@1:0.1808,NDCG@1:0.1808) [1.4 s]
+INFO:root:Epoch 28    loss=0.0694 [18.0 s]    dev=(HR@1:0.1882,MNAP@1:0.1882,NDCG@1:0.1882) [1.4 s] *
+INFO:root:Epoch 29    loss=0.0646 [18.1 s]    dev=(HR@1:0.1890,MNAP@1:0.1890,NDCG@1:0.1890) [1.4 s] *
+INFO:root:Epoch 30    loss=0.0593 [18.1 s]    dev=(HR@1:0.1905,MNAP@1:0.1905,NDCG@1:0.1905) [1.4 s] *
+INFO:root:Epoch 31    loss=0.0553 [18.0 s]    dev=(HR@1:0.1892,MNAP@1:0.1892,NDCG@1:0.1892) [1.4 s]
+INFO:root:Epoch 32    loss=0.0519 [18.1 s]    dev=(HR@1:0.1930,MNAP@1:0.1930,NDCG@1:0.1930) [1.5 s] *
+INFO:root:Epoch 33    loss=0.0481 [18.4 s]    dev=(HR@1:0.1936,MNAP@1:0.1936,NDCG@1:0.1936) [1.5 s] *
+INFO:root:Epoch 34    loss=0.0448 [18.3 s]    dev=(HR@1:0.1933,MNAP@1:0.1933,NDCG@1:0.1933) [1.5 s]
+INFO:root:Epoch 35    loss=0.0417 [18.4 s]    dev=(HR@1:0.1941,MNAP@1:0.1941,NDCG@1:0.1941) [1.4 s] *
+INFO:root:Epoch 36    loss=0.0388 [18.6 s]    dev=(HR@1:0.1926,MNAP@1:0.1926,NDCG@1:0.1926) [1.5 s]
+INFO:root:Epoch 37    loss=0.0375 [18.5 s]    dev=(HR@1:0.1947,MNAP@1:0.1947,NDCG@1:0.1947) [1.5 s] *
+INFO:root:Epoch 38    loss=0.0357 [18.5 s]    dev=(HR@1:0.1954,MNAP@1:0.1954,NDCG@1:0.1954) [1.5 s] *
+INFO:root:Epoch 39    loss=0.0327 [18.4 s]    dev=(HR@1:0.1947,MNAP@1:0.1947,NDCG@1:0.1947) [1.4 s]
+INFO:root:Epoch 40    loss=0.0312 [18.4 s]    dev=(HR@1:0.1941,MNAP@1:0.1941,NDCG@1:0.1941) [1.5 s]
+INFO:root:Epoch 41    loss=0.0291 [18.5 s]    dev=(HR@1:0.1966,MNAP@1:0.1966,NDCG@1:0.1966) [1.4 s] *
+INFO:root:Epoch 42    loss=0.0273 [18.2 s]    dev=(HR@1:0.1948,MNAP@1:0.1948,NDCG@1:0.1948) [1.5 s]
+INFO:root:Epoch 43    loss=0.0270 [18.3 s]    dev=(HR@1:0.1956,MNAP@1:0.1956,NDCG@1:0.1956) [1.4 s]
+INFO:root:Epoch 44    loss=0.0250 [18.2 s]    dev=(HR@1:0.1971,MNAP@1:0.1971,NDCG@1:0.1971) [1.4 s] *
+INFO:root:Epoch 45    loss=0.0235 [18.2 s]    dev=(HR@1:0.1966,MNAP@1:0.1966,NDCG@1:0.1966) [1.4 s]
+INFO:root:Epoch 46    loss=0.0229 [18.2 s]    dev=(HR@1:0.1984,MNAP@1:0.1984,NDCG@1:0.1984) [1.5 s] *
+INFO:root:Epoch 47    loss=0.0216 [18.1 s]    dev=(HR@1:0.1986,MNAP@1:0.1986,NDCG@1:0.1986) [1.5 s] *
+INFO:root:Epoch 48    loss=0.0207 [18.3 s]    dev=(HR@1:0.1947,MNAP@1:0.1947,NDCG@1:0.1947) [1.5 s]
+INFO:root:Epoch 49    loss=0.0200 [18.7 s]    dev=(HR@1:0.1967,MNAP@1:0.1967,NDCG@1:0.1967) [1.5 s]
+INFO:root:Epoch 50    loss=0.0192 [18.5 s]    dev=(HR@1:0.1962,MNAP@1:0.1962,NDCG@1:0.1962) [1.5 s]
+INFO:root:Epoch 51    loss=0.0184 [18.6 s]    dev=(HR@1:0.1952,MNAP@1:0.1952,NDCG@1:0.1952) [1.6 s]
+INFO:root:Epoch 52    loss=0.0177 [18.2 s]    dev=(HR@1:0.1973,MNAP@1:0.1973,NDCG@1:0.1973) [1.5 s]
+INFO:root:Epoch 53    loss=0.0175 [18.2 s]    dev=(HR@1:0.1963,MNAP@1:0.1963,NDCG@1:0.1963) [1.4 s]
+INFO:root:Epoch 54    loss=0.0159 [18.2 s]    dev=(HR@1:0.1979,MNAP@1:0.1979,NDCG@1:0.1979) [1.5 s]
+INFO:root:Epoch 55    loss=0.0158 [18.5 s]    dev=(HR@1:0.1995,MNAP@1:0.1995,NDCG@1:0.1995) [1.5 s] *
+INFO:root:Epoch 56    loss=0.0154 [18.6 s]    dev=(HR@1:0.1980,MNAP@1:0.1980,NDCG@1:0.1980) [1.5 s]
+INFO:root:Epoch 57    loss=0.0146 [18.6 s]    dev=(HR@1:0.2012,MNAP@1:0.2012,NDCG@1:0.2012) [1.5 s] *
+INFO:root:Epoch 58    loss=0.0138 [18.7 s]    dev=(HR@1:0.1998,MNAP@1:0.1998,NDCG@1:0.1998) [1.5 s]
+INFO:root:Epoch 59    loss=0.0134 [18.7 s]    dev=(HR@1:0.2024,MNAP@1:0.2024,NDCG@1:0.2024) [1.5 s] *
+INFO:root:Epoch 60    loss=0.0132 [18.7 s]    dev=(HR@1:0.2011,MNAP@1:0.2011,NDCG@1:0.2011) [1.5 s]
+INFO:root:Epoch 61    loss=0.0128 [18.6 s]    dev=(HR@1:0.2016,MNAP@1:0.2016,NDCG@1:0.2016) [1.5 s]
+INFO:root:Epoch 62    loss=0.0127 [18.6 s]    dev=(HR@1:0.2010,MNAP@1:0.2010,NDCG@1:0.2010) [1.4 s]
+INFO:root:Epoch 63    loss=0.0126 [18.2 s]    dev=(HR@1:0.2001,MNAP@1:0.2001,NDCG@1:0.2001) [1.5 s]
+INFO:root:Epoch 64    loss=0.0118 [18.3 s]    dev=(HR@1:0.1994,MNAP@1:0.1994,NDCG@1:0.1994) [1.5 s]
+INFO:root:Epoch 65    loss=0.0116 [18.2 s]    dev=(HR@1:0.2024,MNAP@1:0.2024,NDCG@1:0.2024) [1.5 s] *
+INFO:root:Epoch 66    loss=0.0110 [18.2 s]    dev=(HR@1:0.1997,MNAP@1:0.1997,NDCG@1:0.1997) [1.5 s]
+INFO:root:Epoch 67    loss=0.0117 [18.2 s]    dev=(HR@1:0.1992,MNAP@1:0.1992,NDCG@1:0.1992) [1.4 s]
+INFO:root:Epoch 68    loss=0.0113 [18.2 s]    dev=(HR@1:0.1988,MNAP@1:0.1988,NDCG@1:0.1988) [1.5 s]
+INFO:root:Epoch 69    loss=0.0109 [18.4 s]    dev=(HR@1:0.1997,MNAP@1:0.1997,NDCG@1:0.1997) [1.5 s]
+INFO:root:Epoch 70    loss=0.0109 [18.6 s]    dev=(HR@1:0.1998,MNAP@1:0.1998,NDCG@1:0.1998) [1.5 s]
+INFO:root:Epoch 71    loss=0.0106 [18.3 s]    dev=(HR@1:0.2003,MNAP@1:0.2003,NDCG@1:0.2003) [1.5 s]
+INFO:root:Epoch 72    loss=0.0107 [18.3 s]    dev=(HR@1:0.1978,MNAP@1:0.1978,NDCG@1:0.1978) [1.5 s]
+INFO:root:Epoch 73    loss=0.0097 [18.5 s]    dev=(HR@1:0.1990,MNAP@1:0.1990,NDCG@1:0.1990) [1.4 s]
+INFO:root:Epoch 74    loss=0.0096 [18.5 s]    dev=(HR@1:0.1988,MNAP@1:0.1988,NDCG@1:0.1988) [1.5 s]
+INFO:root:Epoch 75    loss=0.0093 [18.4 s]    dev=(HR@1:0.1969,MNAP@1:0.1969,NDCG@1:0.1969) [1.5 s]
+INFO:root:Epoch 76    loss=0.0091 [18.3 s]    dev=(HR@1:0.1985,MNAP@1:0.1985,NDCG@1:0.1985) [1.4 s]
+INFO:root:Epoch 77    loss=0.0091 [18.4 s]    dev=(HR@1:0.1996,MNAP@1:0.1996,NDCG@1:0.1996) [1.5 s]
+INFO:root:Epoch 78    loss=0.0094 [18.3 s]    dev=(HR@1:0.2006,MNAP@1:0.2006,NDCG@1:0.2006) [1.5 s]
+INFO:root:Epoch 79    loss=0.0088 [18.3 s]    dev=(HR@1:0.2001,MNAP@1:0.2001,NDCG@1:0.2001) [1.5 s]
+INFO:root:Epoch 80    loss=0.0089 [18.3 s]    dev=(HR@1:0.2009,MNAP@1:0.2009,NDCG@1:0.2009) [1.5 s]
+INFO:root:Epoch 81    loss=0.0083 [18.4 s]    dev=(HR@1:0.1987,MNAP@1:0.1987,NDCG@1:0.1987) [1.5 s]
+INFO:root:Epoch 82    loss=0.0089 [18.4 s]    dev=(HR@1:0.1999,MNAP@1:0.1999,NDCG@1:0.1999) [1.5 s]
+INFO:root:Epoch 83    loss=0.0088 [18.6 s]    dev=(HR@1:0.1965,MNAP@1:0.1965,NDCG@1:0.1965) [1.5 s]
+INFO:root:Epoch 84    loss=0.0082 [18.5 s]    dev=(HR@1:0.2000,MNAP@1:0.2000,NDCG@1:0.2000) [1.5 s]
+INFO:root:Epoch 85    loss=0.0081 [18.5 s]    dev=(HR@1:0.2014,MNAP@1:0.2014,NDCG@1:0.2014) [1.5 s]
+INFO:root:Early stop at 85 based on dev result.
+INFO:root:
+Best Iter(dev)=   65	 dev=(HR@1:0.2024,MNAP@1:0.2024,NDCG@1:0.2024) [1678.7 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:0.1683,MNAP@1:0.1683,NDCG@1:0.1683,HR@5:0.3230,MNAP@5:0.5138,NDCG@5:0.2493,HR@10:0.4019,MNAP@10:0.7526,NDCG@10:0.2748,HR@15:0.4588,MNAP@15:0.9221,NDCG@15:0.2898,HR@20:0.5054,MNAP@20:1.0580,NDCG@20:0.3008)
+INFO:root:
+--------------------------------------------- END: 2022-04-07 22:33:22 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-08 08:17:48 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1137792
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Early stop manually
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-08 08:18:11 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   | hour                
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1752213
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 129)
+  (p_embeddings): Embedding(21, 64)
+  (hours_embeddings): Embedding(24, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=129, out_features=129, bias=True)
+        (k_linear): Linear(in_features=129, out_features=129, bias=True)
+        (v_linear): Linear(in_features=129, out_features=129, bias=True)
+      )
+      (layer_norm1): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=129, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=129, bias=True)
+      (layer_norm2): LayerNorm((129,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Early stop manually
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-04-08 08:21:40 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 1137792
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (i1_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6086 [17.8 s]    dev=(HR@1:0.0734,MNAP@1:0.0734,NDCG@1:0.0734) [1.4 s] *
+INFO:root:Epoch 2     loss=0.4918 [17.5 s]    dev=(HR@1:0.0751,MNAP@1:0.0751,NDCG@1:0.0751) [1.4 s] *
+INFO:root:Epoch 3     loss=0.4509 [17.5 s]    dev=(HR@1:0.0749,MNAP@1:0.0749,NDCG@1:0.0749) [1.4 s]
+INFO:root:Epoch 4     loss=0.4241 [17.6 s]    dev=(HR@1:0.0786,MNAP@1:0.0786,NDCG@1:0.0786) [1.4 s] *
+INFO:root:Epoch 5     loss=0.3936 [17.6 s]    dev=(HR@1:0.0813,MNAP@1:0.0813,NDCG@1:0.0813) [1.4 s] *
+INFO:root:Early stop manually

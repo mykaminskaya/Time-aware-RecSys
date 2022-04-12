@@ -1,0 +1,183 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-11 11:02:03 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_features   | weekday     
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 313160
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-17 11:33:23 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_features   | weekday     
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 313160
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2790 [185.6 s]    dev=(HR@1:0.1215,MNAP@1:0.1215,NDCG@1:0.1215) [0.7 s] *
+INFO:root:Epoch 2     loss=0.2054 [186.8 s]    dev=(HR@1:0.1609,MNAP@1:0.1609,NDCG@1:0.1609) [0.7 s] *
+INFO:root:Epoch 3     loss=0.1744 [186.4 s]    dev=(HR@1:0.1853,MNAP@1:0.1853,NDCG@1:0.1853) [0.7 s] *
+INFO:root:Epoch 4     loss=0.1599 [186.7 s]    dev=(HR@1:0.1927,MNAP@1:0.1927,NDCG@1:0.1927) [0.7 s] *
+INFO:root:Epoch 5     loss=0.1512 [185.4 s]    dev=(HR@1:0.2078,MNAP@1:0.2078,NDCG@1:0.2078) [0.7 s] *
+INFO:root:Epoch 6     loss=0.1484 [183.6 s]    dev=(HR@1:0.2066,MNAP@1:0.2066,NDCG@1:0.2066) [0.7 s]
+INFO:root:Epoch 7     loss=0.1455 [187.5 s]    dev=(HR@1:0.2096,MNAP@1:0.2096,NDCG@1:0.2096) [0.7 s] *
+INFO:root:Epoch 8     loss=0.1451 [188.0 s]    dev=(HR@1:0.2099,MNAP@1:0.2099,NDCG@1:0.2099) [0.7 s] *
+INFO:root:Epoch 9     loss=0.1436 [190.2 s]    dev=(HR@1:0.2123,MNAP@1:0.2123,NDCG@1:0.2123) [0.8 s] *
+INFO:root:Epoch 10    loss=0.1424 [191.3 s]    dev=(HR@1:0.2204,MNAP@1:0.2204,NDCG@1:0.2204) [0.7 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(HR@1:0.2204,MNAP@1:0.2204,NDCG@1:0.2204) [1878.7 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=weekday.pt
+INFO:root:
+Test After Training: (HR@1:0.3560,MNAP@1:0.3560,NDCG@1:0.3560,HR@5:0.7137,MNAP@5:1.1189,NDCG@5:0.5446,HR@10:0.8341,MNAP@10:1.6283,NDCG@10:0.5837,HR@15:0.8899,MNAP@15:1.9666,NDCG@15:0.5985,HR@20:0.9253,MNAP@20:2.2211,NDCG@20:0.6069)
+INFO:root:
+--------------------------------------------- END: 2022-03-17 12:04:48 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-24 12:53:31 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_diffs      | 0           
+ time_features   | weekday     
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 313160
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-24 13:07:05 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_diffs      | 0           
+ time_features   | weekday     
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 313160
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2790 [560.5 s]    dev=(HR@1:0.1450,MNAP@1:0.1450,NDCG@1:0.1450) [1.3 s] *
+INFO:root:Epoch 2     loss=0.2054 [570.3 s]    dev=(HR@1:0.1901,MNAP@1:0.1901,NDCG@1:0.1901) [1.3 s] *
+INFO:root:Epoch 3     loss=0.1744 [601.9 s]    dev=(HR@1:0.2185,MNAP@1:0.2185,NDCG@1:0.2185) [1.4 s] *
+INFO:root:Epoch 4     loss=0.1599 [614.8 s]    dev=(HR@1:0.2290,MNAP@1:0.2290,NDCG@1:0.2290) [1.4 s] *
+INFO:root:Epoch 5     loss=0.1512 [576.9 s]    dev=(HR@1:0.2369,MNAP@1:0.2369,NDCG@1:0.2369) [1.3 s] *
+INFO:root:Epoch 6     loss=0.1484 [589.6 s]    dev=(HR@1:0.2411,MNAP@1:0.2411,NDCG@1:0.2411) [1.4 s] *
+INFO:root:Epoch 7     loss=0.1455 [578.1 s]    dev=(HR@1:0.2444,MNAP@1:0.2444,NDCG@1:0.2444) [1.3 s] *
+INFO:root:Epoch 8     loss=0.1451 [552.9 s]    dev=(HR@1:0.2485,MNAP@1:0.2485,NDCG@1:0.2485) [1.3 s] *
+INFO:root:Epoch 9     loss=0.1436 [545.5 s]    dev=(HR@1:0.2477,MNAP@1:0.2477,NDCG@1:0.2477) [1.3 s]
+INFO:root:Epoch 10    loss=0.1424 [526.5 s]    dev=(HR@1:0.2536,MNAP@1:0.2536,NDCG@1:0.2536) [1.3 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(HR@1:0.2536,MNAP@1:0.2536,NDCG@1:0.2536) [5731.7 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=weekday.pt
+INFO:root:
+Test After Training: (HR@1:0.2325,MNAP@1:0.2325,NDCG@1:0.2325,HR@5:0.5768,MNAP@5:0.8137,NDCG@5:0.4114,HR@10:0.7291,MNAP@10:1.2478,NDCG@10:0.4609,HR@15:0.8043,MNAP@15:1.5497,NDCG@15:0.4808,HR@20:0.8520,MNAP@20:1.7822,NDCG@20:0.4921)
+INFO:root:
+--------------------------------------------- END: 2022-03-24 14:42:46 ---------------------------------------------

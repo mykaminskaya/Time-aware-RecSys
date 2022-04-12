@@ -38,7 +38,7 @@ class BaseRunner(object):
                             help='optimizer: SGD, Adam, Adagrad, Adadelta')
         parser.add_argument('--num_workers', type=int, default=5,
                             help='Number of processors when prepare batches in DataLoader')
-        parser.add_argument('--pin_memory', type=int, default=1,
+        parser.add_argument('--pin_memory', type=int, default=0,
                             help='pin_memory in DataLoader')
         parser.add_argument('--topk', type=str, default='5,10,20,50',
                             help='The number of items recommended to each user.')
@@ -56,15 +56,24 @@ class BaseRunner(object):
         """
         evaluations = dict()
         sort_idx = (-predictions).argsort(axis=1)
-        gt_rank = np.argwhere(sort_idx == 0)[:, 1] + 1
+        gt_rank = np.argwhere(sort_idx == 0)[:, 1]+ 1
         for k in topk:
             hit = (gt_rank <= k)
             for metric in metrics:
                 key = '{}@{}'.format(metric, k)
                 if metric == 'HR':
                     evaluations[key] = hit.mean()
+                    ##Recall?
                 elif metric == 'NDCG':
                     evaluations[key] = (hit / np.log2(gt_rank + 1)).mean()
+                    ##evaluations[key] = np.sum((hit / np.log2(gt_rank + 1))) / np.sum((1 / np.log2(gt_rank_ideal + 1)))
+                    ##gt_rank_ideal == 1 ??
+                elif metric == 'MNAP':
+                    evaluations[key] = 0
+                    for i in range(1, k+1):
+                        hit1 = (gt_rank <= i)
+                        evaluations[key] += np.sum(hit1 / i)
+                    evaluations[key] /= len(predictions)
                 else:
                     raise ValueError('Undefined evaluation metric: {}.'.format(metric))
         return evaluations

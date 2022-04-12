@@ -9,6 +9,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset as BaseDataset
 from torch.nn.utils.rnn import pad_sequence
 from typing import NoReturn, List
+from datetime import datetime
 
 from utils import utils
 from helpers.BaseReader import BaseReader
@@ -113,7 +114,7 @@ class BaseModel(nn.Module):
             self.buffer_dict = dict()
             self.buffer = self.model.buffer and self.phase != 'train'
             self.data = utils.df_to_dict(corpus.data_df[phase])
-            # ↑ DataFrame is not compatible with multi-thread operations
+            # â†‘ DataFrame is not compatible with multi-thread operations
 
             self._prepare()
 
@@ -144,7 +145,14 @@ class BaseModel(nn.Module):
         def collate_batch(self, feed_dicts: List[dict]) -> dict:
             feed_dict = dict()
             for key in feed_dicts[0]:
-                stack_val = np.array([d[key] for d in feed_dicts])
+                if isinstance(feed_dicts[0][key], np.ndarray):
+                    tmp_list = [len(d[key]) for d in feed_dicts]
+                    if any([tmp_list[0] != l for l in tmp_list]):
+                        stack_val = np.array([d[key] for d in feed_dicts], dtype=np.object)
+                    else:
+                        stack_val = np.array([d[key] for d in feed_dicts])
+                else:
+                    stack_val = np.array([d[key] for d in feed_dicts])
                 if stack_val.dtype == np.object:  # inconsistent length (e.g., history)
                     feed_dict[key] = pad_sequence([torch.from_numpy(x) for x in stack_val], batch_first=True)
                 else:
@@ -186,7 +194,7 @@ class GeneralModel(BaseModel):
         loss = -((pos_pred[:, None] - neg_pred).sigmoid() * neg_softmax).sum(dim=1).log().mean()
         # neg_pred = (neg_pred * neg_softmax).sum(dim=1)
         # loss = F.softplus(-(pos_pred - neg_pred)).mean()
-        # ↑ For numerical stability, we use 'softplus(-x)' instead of '-log_sigmoid(x)'
+        # â†‘ For numerical stability, we use 'softplus(-x)' instead of '-log_sigmoid(x)'
         return loss
 
     class Dataset(BaseModel.Dataset):
@@ -196,7 +204,7 @@ class GeneralModel(BaseModel):
                 neg_items = np.arange(1, self.corpus.n_items)
             else:
                 neg_items = self.data['neg_items'][index]
-            item_ids = np.concatenate([[target_item], neg_items]).astype(int)
+            item_ids = np.concatenate([[target_item], neg_items])
             feed_dict = {
                 'user_id': user_id,
                 'item_id': item_ids
@@ -208,6 +216,7 @@ class GeneralModel(BaseModel):
             neg_items = np.random.randint(1, self.corpus.n_items, size=(len(self), self.model.num_neg))
             for i, u in enumerate(self.data['user_id']):
                 clicked_set = self.corpus.train_clicked_set[u]  # neg items are possible to appear in dev/test set
+                # clicked_set = self.corpus.clicked_set[u]  # neg items will not include dev/test set
                 for j in range(self.model.num_neg):
                     while neg_items[i][j] in clicked_set:
                         neg_items[i][j] = np.random.randint(1, self.corpus.n_items)
@@ -240,5 +249,11 @@ class SequentialModel(GeneralModel):
                 user_seq = user_seq[-self.model.history_max:]
             feed_dict['history_items'] = np.array([x[0] for x in user_seq])
             feed_dict['history_times'] = np.array([x[1] for x in user_seq])
+            feed_dict['history_hours'] = np.array([datetime.fromtimestamp(x[1]).hour for x in user_seq])
+            feed_dict['history_days'] = np.array([datetime.fromtimestamp(x[1]).day - 1 for x in user_seq])
+            feed_dict['history_months'] = np.array([datetime.fromtimestamp(x[1]).month - 1 for x in user_seq])
+            feed_dict['history_weekdays'] = np.array([datetime.fromtimestamp(x[1]).weekday() for x in user_seq])
             feed_dict['lengths'] = len(feed_dict['history_items'])
+            feed_dict['history_normalized_times'] = np.array([x[2] for x in user_seq])
+            feed_dict['history_normalized_diffs'] = np.array([x[3] for x in user_seq])
             return feed_dict

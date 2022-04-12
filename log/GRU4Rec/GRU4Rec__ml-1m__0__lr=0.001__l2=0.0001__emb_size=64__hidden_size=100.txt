@@ -1,0 +1,84 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:24:48 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 293512
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:50:02 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 293512
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2815 [50.8 s]    dev=(NDCG@1:0.1533) [0.5 s] *
+INFO:root:Epoch 2     loss=0.2065 [51.0 s]    dev=(NDCG@1:0.1912) [0.5 s] *
+INFO:root:Epoch 3     loss=0.1734 [51.2 s]    dev=(NDCG@1:0.2169) [0.5 s] *
+INFO:root:Epoch 4     loss=0.1593 [51.3 s]    dev=(NDCG@1:0.2303) [0.5 s] *
+INFO:root:Epoch 5     loss=0.1505 [50.9 s]    dev=(NDCG@1:0.2343) [0.6 s] *
+INFO:root:Epoch 6     loss=0.1475 [50.9 s]    dev=(NDCG@1:0.2381) [0.5 s] *
+INFO:root:Epoch 7     loss=0.1445 [51.3 s]    dev=(NDCG@1:0.2371) [0.6 s]
+INFO:root:Epoch 8     loss=0.1435 [50.6 s]    dev=(NDCG@1:0.2571) [0.5 s] *
+INFO:root:Epoch 9     loss=0.1413 [51.2 s]    dev=(NDCG@1:0.2636) [0.5 s] *
+INFO:root:Epoch 10    loss=0.1392 [50.7 s]    dev=(NDCG@1:0.2715) [0.5 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(NDCG@1:0.2715) [515.4 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100.pt
+INFO:root:
+Test After Training: (NDCG@1:0.2488,NDCG@5:0.4317,NDCG@10:0.4781,NDCG@15:0.4965,NDCG@20:0.5087)
+INFO:root:
+--------------------------------------------- END: 2022-02-23 18:58:44 ---------------------------------------------

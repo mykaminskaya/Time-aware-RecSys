@@ -1,0 +1,70 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-20 18:13:27 ---------------------------------------------
+INFO:root:
+======================================
+ Arguments       | Values             
+======================================
+ batch_size      | 256               
+ dataset         | amazon_electronics
+ dropout         | 0                 
+ early_stop      | 10                
+ emb_size        | 64                
+ epoch           | 10                
+ eval_batch_size | 256               
+ gpu             | 0                 
+ history_max     | 20                
+ l2              | 1e-06             
+ lr              | 0.0001            
+ num_heads       | 1                 
+ num_layers      | 1                 
+ num_neg         | 1                 
+ num_workers     | 5                 
+ optimizer       | Adam              
+ random_seed     | 0                 
+ test_all        | 0                 
+ time_max        | 512               
+ topk            | 1,5,10,15,20      
+======================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/amazon_electronics/BaseReader.pkl
+INFO:root:#params: 4097920
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(62633, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6684 [14.6 s]    dev=(NDCG@1:0.1087) [1.9 s] *
+INFO:root:Epoch 2     loss=0.5784 [14.5 s]    dev=(NDCG@1:0.1251) [1.9 s] *
+INFO:root:Epoch 3     loss=0.4901 [14.2 s]    dev=(NDCG@1:0.1303) [1.9 s] *
+INFO:root:Epoch 4     loss=0.4203 [14.6 s]    dev=(NDCG@1:0.1296) [1.9 s]
+INFO:root:Epoch 5     loss=0.3702 [15.5 s]    dev=(NDCG@1:0.1300) [1.9 s]
+INFO:root:Epoch 6     loss=0.3305 [14.5 s]    dev=(NDCG@1:0.1307) [2.0 s] *
+INFO:root:Epoch 7     loss=0.3036 [14.5 s]    dev=(NDCG@1:0.1300) [1.9 s]
+INFO:root:Epoch 8     loss=0.2808 [14.6 s]    dev=(NDCG@1:0.1312) [2.0 s] *
+INFO:root:Epoch 9     loss=0.2656 [15.1 s]    dev=(NDCG@1:0.1283) [2.0 s]
+INFO:root:Epoch 10    loss=0.2502 [14.7 s]    dev=(NDCG@1:0.1285) [1.9 s]
+INFO:root:
+Best Iter(dev)=    8	 dev=(NDCG@1:0.1312) [166.5 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__amazon_electronics__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (NDCG@1:0.1631,NDCG@5:0.2882,NDCG@10:0.3308,NDCG@15:0.3549,NDCG@20:0.3722)
+INFO:root:
+--------------------------------------------- END: 2022-03-20 18:16:32 ---------------------------------------------

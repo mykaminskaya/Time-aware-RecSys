@@ -1,0 +1,135 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:24:44 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 10                  
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ hidden_size     | 100                 
+ history_max     | 20                  
+ l2              | 0.0001              
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 613960
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:25:17 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 10                  
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ hidden_size     | 100                 
+ history_max     | 20                  
+ l2              | 0.0001              
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 613960
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.4889 [5.3 s]    dev=(NDCG@1:0.0792) [0.7 s] *
+INFO:root:Epoch 2     loss=0.4218 [5.3 s]    dev=(NDCG@1:0.0998) [0.8 s] *
+INFO:root:Epoch 3     loss=0.3926 [5.4 s]    dev=(NDCG@1:0.1082) [0.7 s] *
+INFO:root:Epoch 4     loss=0.3761 [5.3 s]    dev=(NDCG@1:0.1163) [0.7 s] *
+INFO:root:Epoch 5     loss=0.3603 [5.3 s]    dev=(NDCG@1:0.1187) [0.7 s] *
+INFO:root:Epoch 6     loss=0.3478 [5.3 s]    dev=(NDCG@1:0.1320) [0.7 s] *
+INFO:root:Epoch 7     loss=0.3376 [5.6 s]    dev=(NDCG@1:0.1366) [0.7 s] *
+INFO:root:Epoch 8     loss=0.3254 [5.5 s]    dev=(NDCG@1:0.1361) [0.7 s]
+INFO:root:Epoch 9     loss=0.3117 [5.4 s]    dev=(NDCG@1:0.1362) [0.7 s]
+INFO:root:Epoch 10    loss=0.3012 [5.4 s]    dev=(NDCG@1:0.1401) [0.7 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(NDCG@1:0.1401) [61.0 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__Grocery_and_Gourmet_Food__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100.pt
+INFO:root:
+Test After Training: (NDCG@1:0.1091,NDCG@5:0.2228,NDCG@10:0.2599,NDCG@15:0.2787,NDCG@20:0.2910)
+INFO:root:
+--------------------------------------------- END: 2022-02-23 18:26:24 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:48:51 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 10                  
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ hidden_size     | 100                 
+ history_max     | 20                  
+ l2              | 0.0001              
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 613960
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.4889 [5.9 s]    dev=(NDCG@1:0.0792) [0.7 s] *
+INFO:root:Epoch 2     loss=0.4218 [5.4 s]    dev=(NDCG@1:0.0998) [0.8 s] *
+INFO:root:Epoch 3     loss=0.3926 [5.4 s]    dev=(NDCG@1:0.1082) [0.8 s] *
+INFO:root:Epoch 4     loss=0.3761 [5.5 s]    dev=(NDCG@1:0.1163) [0.8 s] *
+INFO:root:Epoch 5     loss=0.3603 [5.5 s]    dev=(NDCG@1:0.1187) [0.8 s] *
+INFO:root:Epoch 6     loss=0.3478 [5.5 s]    dev=(NDCG@1:0.1320) [0.8 s] *
+INFO:root:Epoch 7     loss=0.3376 [5.5 s]    dev=(NDCG@1:0.1366) [0.7 s] *
+INFO:root:Epoch 8     loss=0.3254 [5.5 s]    dev=(NDCG@1:0.1361) [0.7 s]
+INFO:root:Epoch 9     loss=0.3117 [5.6 s]    dev=(NDCG@1:0.1362) [0.8 s]
+INFO:root:Epoch 10    loss=0.3012 [5.4 s]    dev=(NDCG@1:0.1401) [0.8 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(NDCG@1:0.1401) [62.9 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__Grocery_and_Gourmet_Food__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100.pt
+INFO:root:
+Test After Training: (NDCG@1:0.1091,NDCG@5:0.2228,NDCG@10:0.2599,NDCG@15:0.2787,NDCG@20:0.2910)
+INFO:root:
+--------------------------------------------- END: 2022-02-23 18:50:00 ---------------------------------------------

@@ -1,0 +1,127 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:09:09 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 326656
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(3707, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3694 [66.7 s]    dev=(HR@1:0.1106,NDCG@1:0.1106) [0.5 s] *
+INFO:root:Epoch 2     loss=0.2529 [66.6 s]    dev=(HR@1:0.1699,NDCG@1:0.1699) [0.5 s] *
+INFO:root:Epoch 3     loss=0.1984 [66.1 s]    dev=(HR@1:0.2414,NDCG@1:0.2414) [0.6 s] *
+INFO:root:Early stop manually
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:13:06 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 326656
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(3707, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3694 [71.6 s]    dev=(NDCG@1:0.1106) [0.6 s] *
+INFO:root:Epoch 2     loss=0.2529 [68.4 s]    dev=(NDCG@1:0.1699) [0.6 s] *
+INFO:root:Epoch 3     loss=0.1984 [67.7 s]    dev=(NDCG@1:0.2414) [0.6 s] *
+INFO:root:Epoch 4     loss=0.1592 [67.3 s]    dev=(NDCG@1:0.2869) [0.6 s] *
+INFO:root:Epoch 5     loss=0.1379 [68.3 s]    dev=(NDCG@1:0.3119) [0.6 s] *
+INFO:root:Epoch 6     loss=0.1277 [67.6 s]    dev=(NDCG@1:0.3200) [0.6 s] *
+INFO:root:Epoch 7     loss=0.1198 [67.3 s]    dev=(NDCG@1:0.3341) [0.5 s] *
+INFO:root:Epoch 8     loss=0.1149 [67.2 s]    dev=(NDCG@1:0.3454) [0.6 s] *
+INFO:root:Epoch 9     loss=0.1096 [67.4 s]    dev=(NDCG@1:0.3568) [0.6 s] *
+INFO:root:Epoch 10    loss=0.1063 [67.6 s]    dev=(NDCG@1:0.3656) [0.5 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(NDCG@1:0.3656) [686.1 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__ml-1m__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (NDCG@1:0.3381,NDCG@5:0.5202,NDCG@10:0.5568,NDCG@15:0.5725,NDCG@20:0.5803)
+INFO:root:
+--------------------------------------------- END: 2022-02-23 18:24:42 ---------------------------------------------

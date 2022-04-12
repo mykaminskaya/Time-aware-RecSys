@@ -38,11 +38,13 @@ class BaseReader(object):
             self.data_df[key] = utils.eval_list_columns(self.data_df[key])
 
         logging.info('Counting dataset statistics...')
-        self.all_df = pd.concat([df[['user_id', 'item_id', 'time']] for df in self.data_df.values()])
+        self.all_df = pd.concat([df[['user_id', 'item_id', 'time', 'time1', 'diff1']] for df in self.data_df.values()])
         self.n_users, self.n_items = self.all_df['user_id'].max() + 1, self.all_df['item_id'].max() + 1
         for key in ['dev', 'test']:
             if 'neg_items' in self.data_df[key]:
-                neg_items = np.array(self.data_df[key]['neg_items'].tolist())
+                l = min(np.vectorize(lambda x: len(x))(self.data_df[key]['neg_items']))
+                self.data_df[key]['neg_items'] = pd.Series([np.array(x[:l]) for x in self.data_df[key]['neg_items']])
+                neg_items = np.stack(np.array(self.data_df[key]['neg_items'].tolist()))
                 assert (neg_items >= self.n_items).sum() == 0  # assert negative items don't include unseen ones
         logging.info('"# user": {}, "# item": {}, "# entry": {}'.format(
             self.n_users - 1, self.n_items - 1, len(self.all_df)))
@@ -55,17 +57,20 @@ class BaseReader(object):
         logging.info('Appending history info...')
         self.user_his = dict()  # store the already seen sequence of each user
         self.train_clicked_set = dict()  # store the clicked item set of each user in training set
+        self.clicked_set = dict()
         for key in ['train', 'dev', 'test']:
             df = self.data_df[key]
             position = list()
-            for uid, iid, t in zip(df['user_id'], df['item_id'], df['time']):
+            for uid, iid, t, t1, d1 in zip(df['user_id'], df['item_id'], df['time'], df['time1'], df['diff1']):
                 if uid not in self.user_his:
                     self.user_his[uid] = list()
                     self.train_clicked_set[uid] = set()
+                    self.clicked_set[uid] = set()
                 position.append(len(self.user_his[uid]))
-                self.user_his[uid].append((iid, t))
+                self.user_his[uid].append((iid, t, t1, d1))
                 if key == 'train':
                     self.train_clicked_set[uid].add(iid)
+                self.clicked_set[uid].add(iid)
             df['position'] = position
 
 

@@ -96,9 +96,23 @@ class TiMiRec(SequentialModel):
     def actions_before_train(self):
         if self.stage == 3 and os.path.exists(self.extractor_path):
             self.load_model(self.extractor_path)
-            self.load_model(self.predictor_path)
+            # self.load_model(self.predictor_path)
             return
         logging.info('Train from scratch!')
+
+    @staticmethod
+    def similarity(a, b):
+        a = F.normalize(a, dim=-1)
+        b = F.normalize(b, dim=-1)
+        return (a * b).sum(dim=-1)
+
+    @staticmethod
+    def js_div(p, q):
+        kl = nn.KLDivLoss(reduction='none')
+        p, q = p.softmax(-1), q.softmax(-1)
+        log_mean = ((p + q) / 2).log()
+        js = (kl(log_mean, p) + kl(log_mean, q)) / 2
+        return js
 
     def forward(self, feed_dict):
         self.check_list = []
@@ -131,20 +145,26 @@ class TiMiRec(SequentialModel):
         else:  # finetune
             interest_vectors = self.interest_extractor(history, lengths)  # bsz, K, emb
             i_vectors = self.interest_extractor.i_embeddings(i_ids)
-            target_vector = i_vectors[:, 0]  # bsz, emb
-            target_intent = (interest_vectors * target_vector[:, None, :]).sum(-1)  # bsz, K
             his_vector = self.intent_predictor(history, lengths, t_history, user_min_t)
             pred_intent = self.proj(his_vector)  # bsz, K
             user_vector = (interest_vectors * pred_intent.softmax(-1)[:, :, None]).sum(-2)  # bsz, emb
             if feed_dict['phase'] == 'train':
-                idx_select = pred_intent.max(-1)[1]  # bsz
-                user_vector = interest_vectors[torch.arange(batch_size), idx_select, :]  # bsz, emb
+                # idx_select = pred_intent.max(-1)[1]  # bsz
+                # user_vector = interest_vectors[torch.arange(batch_size), idx_select, :]  # bsz, emb
+                target_vector = i_vectors[:, 0]  # bsz, emb
+                target_intent = (interest_vectors * target_vector[:, None, :]).sum(-1)  # bsz, K
                 out_dict['pred_intent'] = pred_intent
                 out_dict['target_intent'] = target_intent
                 self.check_list.append(('intent', pred_intent.softmax(-1)))
                 self.check_list.append(('target', target_intent.softmax(-1)))
             prediction = (user_vector[:, None, :] * i_vectors).sum(-1)
         out_dict['prediction'] = prediction.view(batch_size, -1)
+
+        # For JS divergence analysis
+        if self.stage == 3 and feed_dict['phase'] == 'test':
+            target_vector = i_vectors[:, 0]  # bsz, emb
+            target_intent = self.similarity(interest_vectors, target_vector.unsqueeze(1))  # bsz, K
+            out_dict['js'] = self.js_div(target_intent, pred_intent).sum(-1)
 
         return out_dict
 

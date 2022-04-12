@@ -1,0 +1,34 @@
+job:
+  time_limit: 60h0m0s # после какого времени убить наш процесс
+  flavor: standard-1x # ресурс, который нам дан. v100-1x - 1 gpu, standard-1x - 8 cpu без gpu
+  generate_name: recsys-research
+  image: docker-internal.tcsbank.ru/recsys/default-gpu-pack:python3.7
+  entrypoint: ""
+  input:
+  - type: files
+    src: src/.
+    dst: /home/src
+    mask: "**/*"
+  - type: cifs
+    src: "//fs-userdata/new_products$/m.y.kaminskaya/ReChorus_my/data/"
+    dst: /home/data/
+    user: svc_ml_team
+    pass: K32Hb&+9719&T4)0
+  - type: files
+    src: .
+    dst: /home/
+    mask: "requirements.txt"
+  output:
+  - type: cifs
+    src: "/m.y.kaminskaya/ReChorus_my/data/"
+    dst: "//fs-userdata/new_products$/m.y.kaminskaya/ReChorus_my/data/"
+    user: svc_ml_team
+    pass: K32Hb&+9719&T4)0
+  args:
+  - bash
+  - -c
+  - | 
+    cd /home && \
+    cd src && \
+    pip install -r ../requirements.txt && \
+    python3.7 main.py --model_name SASRec --metric 'NDCG,HR,MNAP' --continuous_time 1 --topk '1,5,10,15,20' --num_layers 1 --num_heads 1 --emb_size 64 --hidden_size 100 --lr 1e-3 --l2 1e-4 --history_max 20 --dataset 'Grocery_and_Gourmet_Food' 

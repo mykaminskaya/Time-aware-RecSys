@@ -32,6 +32,12 @@ class SASRec(SequentialModel):
                             help='Number of self-attention layers.')
         parser.add_argument('--num_heads', type=int, default=4,
                             help='Number of attention heads.')
+        parser.add_argument('--time_features', type=str, default='',
+                            help='')
+        parser.add_argument('--continuous_time', type=int, default=0,
+                            help='')
+        parser.add_argument('--time_diffs', type=int, default=0,
+                            help='')
         return SequentialModel.parse_model_args(parser)
 
     def __init__(self, args, corpus):
@@ -39,15 +45,34 @@ class SASRec(SequentialModel):
         self.max_his = args.history_max
         self.num_layers = args.num_layers
         self.num_heads = args.num_heads
+        self.time_features = [m.strip().upper() for m in args.time_features.split(',')]
+        if self.time_features[0] == '':
+            self.time_features = []
+        self.continuous_time = args.continuous_time
+        self.time_diffs = args.time_diffs
         super().__init__(args, corpus)
         self.len_range = torch.from_numpy(np.arange(self.max_his)).to(self.device)
 
     def _define_params(self):
+        sz = self.emb_size * (len(self.time_features) + 1) + self.continuous_time + self.time_diffs
         self.i_embeddings = nn.Embedding(self.item_num, self.emb_size)
+        self.i1_embeddings = nn.Embedding(self.item_num, sz)
         self.p_embeddings = nn.Embedding(self.max_his + 1, self.emb_size)
 
+        for f in self.time_features:
+            if f == 'HOUR':
+                self.hours_embeddings = nn.Embedding(24, self.emb_size)
+            elif f == 'MONTH':
+                self.months_embeddings = nn.Embedding(12, self.emb_size)
+            elif f == 'DAY':
+                self.days_embeddings = nn.Embedding(31, self.emb_size)
+            elif f == 'WEEKDAY':
+                self.weekdays_embeddings = nn.Embedding(7, self.emb_size)
+            else:
+                raise ValueError('Undefined time feature: {}.'.format(f))
+
         self.transformer_block = nn.ModuleList([
-            layers.TransformerLayer(d_model=self.emb_size, d_ff=self.emb_size, n_heads=self.num_heads,
+            layers.TransformerLayer(d_model=sz, d_ff=self.emb_size, n_heads=self.num_heads,
                                     dropout=self.dropout, kq_same=False)
             for _ in range(self.num_layers)
         ])
@@ -57,6 +82,12 @@ class SASRec(SequentialModel):
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
         lengths = feed_dict['lengths']  # [batch_size]
+        hours = feed_dict['history_hours']
+        days = feed_dict['history_days']
+        months = feed_dict['history_months']
+        weekdays = feed_dict['history_weekdays']
+        norm_time = feed_dict['history_normalized_times'].float()
+        norm_diff = feed_dict['history_normalized_diffs'].float()
         batch_size, seq_len = history.shape
 
         valid_his = (history > 0).long()
@@ -68,6 +99,27 @@ class SASRec(SequentialModel):
         position = (lengths[:, None] - self.len_range[None, :seq_len]) * valid_his
         pos_vectors = self.p_embeddings(position)
         his_vectors = his_vectors + pos_vectors
+
+        # features
+        for f in self.time_features:
+            if f == 'HOUR':
+                hours_vectors = self.hours_embeddings(hours)
+                his_vectors = torch.cat((his_vectors, hours_vectors), 2)
+            elif f == 'MONTH':
+                months_vectors = self.months_embeddings(months)
+                his_vectors = torch.cat((his_vectors, months_vectors), 2)
+            elif f == 'DAY':
+                days_vectors = self.days_embeddings(days)
+                his_vectors = torch.cat((his_vectors, days_vectors), 2)
+            elif f == 'WEEKDAY':
+                weekdays_vectors = self.weekdays_embeddings(weekdays)
+                his_vectors = torch.cat((his_vectors, weekdays_vectors), 2)
+            else:
+                raise ValueError('Undefined time feature: {}.'.format(f))
+        if self.continuous_time == 1:
+            his_vectors = torch.cat((his_vectors, norm_time.reshape(norm_time.shape[0], norm_time.shape[1], 1)), 2)
+        if self.time_diffs == 1:
+            his_vectors = torch.cat((his_vectors, norm_diff.reshape(norm_diff.shape[0], norm_diff.shape[1], 1)), 2)
 
         # Self-attention
         causality_mask = np.tril(np.ones((1, 1, seq_len, seq_len), dtype=np.int))
@@ -81,6 +133,6 @@ class SASRec(SequentialModel):
         # his_vector = his_vectors.sum(1) / lengths[:, None].float()
         # ↑ average pooling is shown to be more effective than the most recent embedding
 
-        i_vectors = self.i_embeddings(i_ids)
+        i_vectors = self.i1_embeddings(i_ids)
         prediction = (his_vector[:, None, :] * i_vectors).sum(-1)
         return {'prediction': prediction.view(batch_size, -1)}

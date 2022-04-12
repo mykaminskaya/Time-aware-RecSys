@@ -1,0 +1,70 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-02-23 18:32:33 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 10                  
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 1                   
+ test_all        | 0                   
+ time_max        | 512                 
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 647104
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6206 [8.2 s]    dev=(NDCG@1:0.0770) [0.8 s] *
+INFO:root:Epoch 2     loss=0.5026 [7.8 s]    dev=(NDCG@1:0.0791) [0.8 s] *
+INFO:root:Epoch 3     loss=0.4513 [7.6 s]    dev=(NDCG@1:0.0868) [0.8 s] *
+INFO:root:Epoch 4     loss=0.4202 [7.9 s]    dev=(NDCG@1:0.0993) [0.8 s] *
+INFO:root:Epoch 5     loss=0.3949 [8.1 s]    dev=(NDCG@1:0.1076) [0.8 s] *
+INFO:root:Epoch 6     loss=0.3763 [7.4 s]    dev=(NDCG@1:0.1140) [0.8 s] *
+INFO:root:Epoch 7     loss=0.3580 [7.6 s]    dev=(NDCG@1:0.1197) [0.8 s] *
+INFO:root:Epoch 8     loss=0.3411 [7.8 s]    dev=(NDCG@1:0.1233) [0.8 s] *
+INFO:root:Epoch 9     loss=0.3270 [7.8 s]    dev=(NDCG@1:0.1271) [0.8 s] *
+INFO:root:Epoch 10    loss=0.3115 [7.7 s]    dev=(NDCG@1:0.1339) [0.8 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(NDCG@1:0.1339) [86.3 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__Grocery_and_Gourmet_Food__1__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (NDCG@1:0.1031,NDCG@5:0.2064,NDCG@10:0.2450,NDCG@15:0.2616,NDCG@20:0.2726)
+INFO:root:
+--------------------------------------------- END: 2022-02-23 18:34:07 ---------------------------------------------

@@ -1,0 +1,109 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-18 06:47:40 ---------------------------------------------
+INFO:root:
+======================================
+ Arguments       | Values             
+======================================
+ batch_size      | 256               
+ continuous_time | 0                 
+ dataset         | amazon_electronics
+ dropout         | 0                 
+ early_stop      | 10                
+ emb_size        | 64                
+ epoch           | 10                
+ eval_batch_size | 256               
+ gpu             | 0                 
+ hidden_size     | 100               
+ history_max     | 20                
+ l2              | 0.0001            
+ lr              | 0.001             
+ num_neg         | 1                 
+ num_workers     | 5                 
+ optimizer       | Adam              
+ random_seed     | 0                 
+ test_all        | 0                 
+ time_features   | weekday           
+ topk            | 1,5,10,15,20      
+======================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/amazon_electronics/BaseReader.pkl
+INFO:root:#params: 4084424
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(62633, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.5118 [34.3 s]    dev=(HR@1:0.1134,MNAP@1:0.1134,NDCG@1:0.1134) [2.6 s] *
+INFO:root:Epoch 2     loss=0.3484 [33.5 s]    dev=(HR@1:0.1104,MNAP@1:0.1104,NDCG@1:0.1104) [2.6 s]
+INFO:root:Epoch 3     loss=0.3096 [33.4 s]    dev=(HR@1:0.1122,MNAP@1:0.1122,NDCG@1:0.1122) [2.7 s]
+INFO:root:Epoch 4     loss=0.2890 [33.8 s]    dev=(HR@1:0.1110,MNAP@1:0.1110,NDCG@1:0.1110) [2.7 s]
+INFO:root:Epoch 5     loss=0.2771 [33.3 s]    dev=(HR@1:0.1145,MNAP@1:0.1145,NDCG@1:0.1145) [2.7 s] *
+INFO:root:Epoch 6     loss=0.2635 [33.4 s]    dev=(HR@1:0.1091,MNAP@1:0.1091,NDCG@1:0.1091) [2.6 s]
+INFO:root:Epoch 7     loss=0.2576 [33.8 s]    dev=(HR@1:0.1090,MNAP@1:0.1090,NDCG@1:0.1090) [2.8 s]
+INFO:root:Epoch 8     loss=0.2500 [33.4 s]    dev=(HR@1:0.1119,MNAP@1:0.1119,NDCG@1:0.1119) [2.6 s]
+INFO:root:Epoch 9     loss=0.2473 [33.2 s]    dev=(HR@1:0.1076,MNAP@1:0.1076,NDCG@1:0.1076) [2.7 s]
+INFO:root:Epoch 10    loss=0.2390 [33.5 s]    dev=(HR@1:0.1135,MNAP@1:0.1135,NDCG@1:0.1135) [2.6 s]
+INFO:root:
+Best Iter(dev)=    5	 dev=(HR@1:0.1145,MNAP@1:0.1145,NDCG@1:0.1145) [362.3 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__amazon_electronics__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=weekday.pt
+INFO:root:
+Test After Training: (HR@1:0.1128,MNAP@1:0.1128,NDCG@1:0.1128,HR@5:0.2989,MNAP@5:0.4037,NDCG@5:0.2079,HR@10:0.4223,MNAP@10:0.6432,NDCG@10:0.2477,HR@15:0.5090,MNAP@15:0.8275,NDCG@15:0.2706,HR@20:0.5753,MNAP@20:0.9808,NDCG@20:0.2862)
+INFO:root:
+--------------------------------------------- END: 2022-03-18 06:53:47 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-24 08:51:44 ---------------------------------------------
+INFO:root:
+======================================
+ Arguments       | Values             
+======================================
+ batch_size      | 256               
+ continuous_time | 0                 
+ dataset         | amazon_electronics
+ dropout         | 0                 
+ early_stop      | 10                
+ emb_size        | 64                
+ epoch           | 10                
+ eval_batch_size | 256               
+ gpu             | 0                 
+ hidden_size     | 100               
+ history_max     | 20                
+ l2              | 0.0001            
+ lr              | 0.001             
+ num_neg         | 1                 
+ num_workers     | 5                 
+ optimizer       | Adam              
+ random_seed     | 0                 
+ test_all        | 0                 
+ time_diffs      | 0                 
+ time_features   | weekday           
+ topk            | 1,5,10,15,20      
+======================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/amazon_electronics/BaseReader.pkl
+INFO:root:#params: 4107912
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(63000, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.5390 [19.7 s]    dev=(HR@1:0.1656,MNAP@1:0.1656,NDCG@1:0.1656) [2.0 s] *
+INFO:root:Epoch 2     loss=0.4199 [19.9 s]    dev=(HR@1:0.1668,MNAP@1:0.1668,NDCG@1:0.1668) [2.0 s] *
+INFO:root:Epoch 3     loss=0.3818 [19.9 s]    dev=(HR@1:0.1661,MNAP@1:0.1661,NDCG@1:0.1661) [2.0 s]
+INFO:root:Epoch 4     loss=0.3554 [19.7 s]    dev=(HR@1:0.1698,MNAP@1:0.1698,NDCG@1:0.1698) [2.1 s] *
+INFO:root:Epoch 5     loss=0.3395 [19.9 s]    dev=(HR@1:0.1683,MNAP@1:0.1683,NDCG@1:0.1683) [2.0 s]
+INFO:root:Epoch 6     loss=0.3278 [19.7 s]    dev=(HR@1:0.1631,MNAP@1:0.1631,NDCG@1:0.1631) [2.0 s]
+INFO:root:Epoch 7     loss=0.3135 [19.8 s]    dev=(HR@1:0.1605,MNAP@1:0.1605,NDCG@1:0.1605) [2.0 s]
+INFO:root:Epoch 8     loss=0.3004 [20.0 s]    dev=(HR@1:0.1593,MNAP@1:0.1593,NDCG@1:0.1593) [2.1 s]
+INFO:root:Epoch 9     loss=0.2874 [20.0 s]    dev=(HR@1:0.1611,MNAP@1:0.1611,NDCG@1:0.1611) [2.0 s]
+INFO:root:Epoch 10    loss=0.2836 [19.8 s]    dev=(HR@1:0.1608,MNAP@1:0.1608,NDCG@1:0.1608) [2.1 s]
+INFO:root:
+Best Iter(dev)=    4	 dev=(HR@1:0.1698,MNAP@1:0.1698,NDCG@1:0.1698) [219.5 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__amazon_electronics__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=weekday.pt
+INFO:root:
+Test After Training: (HR@1:0.1535,MNAP@1:0.1535,NDCG@1:0.1535,HR@5:0.3403,MNAP@5:0.5019,NDCG@5:0.2501,HR@10:0.4450,MNAP@10:0.7623,NDCG@10:0.2839,HR@15:0.5133,MNAP@15:0.9514,NDCG@15:0.3020,HR@20:0.5648,MNAP@20:1.1035,NDCG@20:0.3142)
+INFO:root:
+--------------------------------------------- END: 2022-03-24 08:55:31 ---------------------------------------------

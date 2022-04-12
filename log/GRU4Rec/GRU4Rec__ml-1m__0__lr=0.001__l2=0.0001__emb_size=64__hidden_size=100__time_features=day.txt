@@ -1,0 +1,200 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-11 11:01:54 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_features   | day         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 314696
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (days_embeddings): Embedding(31, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-17 10:30:37 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_features   | day         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 314696
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (days_embeddings): Embedding(31, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2834 [182.0 s]    dev=(HR@1:0.1348,MNAP@1:0.1348,NDCG@1:0.1348) [0.7 s] *
+INFO:root:Epoch 2     loss=0.2060 [183.8 s]    dev=(HR@1:0.1641,MNAP@1:0.1641,NDCG@1:0.1641) [0.7 s] *
+INFO:root:Epoch 3     loss=0.1734 [184.2 s]    dev=(HR@1:0.1742,MNAP@1:0.1742,NDCG@1:0.1742) [0.7 s] *
+INFO:root:Epoch 4     loss=0.1584 [188.2 s]    dev=(HR@1:0.2017,MNAP@1:0.2017,NDCG@1:0.2017) [0.7 s] *
+INFO:root:Epoch 5     loss=0.1506 [186.7 s]    dev=(HR@1:0.1974,MNAP@1:0.1974,NDCG@1:0.1974) [0.7 s]
+INFO:root:Epoch 6     loss=0.1481 [186.6 s]    dev=(HR@1:0.2093,MNAP@1:0.2093,NDCG@1:0.2093) [0.7 s] *
+INFO:root:Epoch 7     loss=0.1449 [185.1 s]    dev=(HR@1:0.2172,MNAP@1:0.2172,NDCG@1:0.2172) [0.7 s] *
+INFO:root:Epoch 8     loss=0.1439 [187.5 s]    dev=(HR@1:0.2119,MNAP@1:0.2119,NDCG@1:0.2119) [0.7 s]
+INFO:root:Epoch 9     loss=0.1417 [188.5 s]    dev=(HR@1:0.2180,MNAP@1:0.2180,NDCG@1:0.2180) [0.7 s] *
+INFO:root:Epoch 10    loss=0.1399 [188.7 s]    dev=(HR@1:0.2185,MNAP@1:0.2185,NDCG@1:0.2185) [0.7 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(HR@1:0.2185,MNAP@1:0.2185,NDCG@1:0.2185) [1868.4 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=day.pt
+INFO:root:
+Test After Training: (HR@1:0.3800,MNAP@1:0.3800,NDCG@1:0.3800,HR@5:0.7257,MNAP@5:1.1695,NDCG@5:0.5638,HR@10:0.8417,MNAP@10:1.6873,NDCG@10:0.6018,HR@15:0.8947,MNAP@15:2.0279,NDCG@15:0.6159,HR@20:0.9252,MNAP@20:2.2832,NDCG@20:0.6231)
+INFO:root:
+--------------------------------------------- END: 2022-03-17 11:01:52 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-24 11:45:43 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_diffs      | 0           
+ time_features   | day         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 314696
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (days_embeddings): Embedding(31, 64)
+  (rnn): GRU(128, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2834 [199.6 s]    dev=(HR@1:0.1508,MNAP@1:0.1508,NDCG@1:0.1508) [0.8 s] *
+INFO:root:Epoch 2     loss=0.2060 [199.2 s]    dev=(HR@1:0.1904,MNAP@1:0.1904,NDCG@1:0.1904) [0.8 s] *
+INFO:root:Epoch 3     loss=0.1734 [200.5 s]    dev=(HR@1:0.2199,MNAP@1:0.2199,NDCG@1:0.2199) [0.8 s] *
+INFO:root:Epoch 4     loss=0.1584 [202.2 s]    dev=(HR@1:0.2422,MNAP@1:0.2422,NDCG@1:0.2422) [0.8 s] *
+INFO:root:Epoch 5     loss=0.1506 [203.6 s]    dev=(HR@1:0.2356,MNAP@1:0.2356,NDCG@1:0.2356) [0.8 s]
+INFO:root:Epoch 6     loss=0.1481 [203.1 s]    dev=(HR@1:0.2421,MNAP@1:0.2421,NDCG@1:0.2421) [0.8 s]
+INFO:root:Epoch 7     loss=0.1449 [201.2 s]    dev=(HR@1:0.2528,MNAP@1:0.2528,NDCG@1:0.2528) [0.8 s] *
+INFO:root:Epoch 8     loss=0.1439 [200.0 s]    dev=(HR@1:0.2522,MNAP@1:0.2522,NDCG@1:0.2522) [0.8 s]
+INFO:root:Epoch 9     loss=0.1417 [199.5 s]    dev=(HR@1:0.2512,MNAP@1:0.2512,NDCG@1:0.2512) [0.8 s]
+INFO:root:Epoch 10    loss=0.1399 [201.9 s]    dev=(HR@1:0.2553,MNAP@1:0.2553,NDCG@1:0.2553) [0.8 s] *
+INFO:root:
+Best Iter(dev)=   10	 dev=(HR@1:0.2553,MNAP@1:0.2553,NDCG@1:0.2553) [2019.4 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=day.pt
+INFO:root:
+Test After Training: (HR@1:0.2384,MNAP@1:0.2384,NDCG@1:0.2384,HR@5:0.5891,MNAP@5:0.8329,NDCG@5:0.4207,HR@10:0.7374,MNAP@10:1.2734,NDCG@10:0.4690,HR@15:0.8094,MNAP@15:1.5773,NDCG@15:0.4880,HR@20:0.8530,MNAP@20:1.8114,NDCG@20:0.4984)
+INFO:root:
+--------------------------------------------- END: 2022-03-24 12:19:28 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-03-25 11:56:56 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 1           
+ dataset         | ml-1m       
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 10          
+ eval_batch_size | 256         
+ gpu             | 0           
+ hidden_size     | 100         
+ history_max     | 20          
+ l2              | 0.0001      
+ lr              | 0.001       
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time_diffs      | 1           
+ time_features   | day         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: True
+INFO:root:Load corpus from ../data/ml-1m/BaseReader.pkl
+INFO:root:#params: 315296
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (days_embeddings): Embedding(31, 64)
+  (rnn): GRU(130, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2850 [204.7 s]    dev=(HR@1:0.1550,MNAP@1:0.1550,NDCG@1:0.1550) [0.8 s] *
+INFO:root:Epoch 2     loss=0.2067 [206.2 s]    dev=(HR@1:0.1964,MNAP@1:0.1964,NDCG@1:0.1964) [0.8 s] *
+INFO:root:Epoch 3     loss=0.1735 [205.0 s]    dev=(HR@1:0.2267,MNAP@1:0.2267,NDCG@1:0.2267) [0.8 s] *
+INFO:root:Epoch 4     loss=0.1580 [207.2 s]    dev=(HR@1:0.2409,MNAP@1:0.2409,NDCG@1:0.2409) [0.8 s] *
+INFO:root:Epoch 5     loss=0.1493 [205.8 s]    dev=(HR@1:0.2459,MNAP@1:0.2459,NDCG@1:0.2459) [0.8 s] *
+INFO:root:Epoch 6     loss=0.1462 [204.4 s]    dev=(HR@1:0.2450,MNAP@1:0.2450,NDCG@1:0.2450) [0.8 s]
+INFO:root:Epoch 7     loss=0.1434 [200.5 s]    dev=(HR@1:0.2492,MNAP@1:0.2492,NDCG@1:0.2492) [0.8 s] *
+INFO:root:Epoch 8     loss=0.1422 [200.8 s]    dev=(HR@1:0.2541,MNAP@1:0.2541,NDCG@1:0.2541) [0.8 s] *
+INFO:root:Epoch 9     loss=0.1394 [198.7 s]    dev=(HR@1:0.2662,MNAP@1:0.2662,NDCG@1:0.2662) [0.8 s] *
+INFO:root:Epoch 10    loss=0.1373 [204.9 s]    dev=(HR@1:0.2598,MNAP@1:0.2598,NDCG@1:0.2598) [0.8 s]
+INFO:root:
+Best Iter(dev)=    9	 dev=(HR@1:0.2662,MNAP@1:0.2662,NDCG@1:0.2662) [2046.9 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=day.pt
+INFO:root:
+Test After Training: (HR@1:0.2483,MNAP@1:0.2483,NDCG@1:0.2483,HR@5:0.5998,MNAP@5:0.8586,NDCG@5:0.4316,HR@10:0.7470,MNAP@10:1.3047,NDCG@10:0.4793,HR@15:0.8111,MNAP@15:1.6110,NDCG@15:0.4964,HR@20:0.8561,MNAP@20:1.8454,NDCG@20:0.5070)
+INFO:root:
+--------------------------------------------- END: 2022-03-25 12:31:09 ---------------------------------------------

@@ -60,14 +60,16 @@ def main():
         os.makedirs(args.log_dir)
     in_f = open(os.path.join(args.cmd_dir, args.in_f), 'r')
     lines = in_f.readlines()
+    res_df = pd.DataFrame()
 
+    col = []
     # Iterate commands
     for cmd in lines:
         cmd = cmd.strip()
         if cmd == '' or cmd.startswith('#') or cmd.startswith('export'):
             continue
-        p = re.compile('--model_name (\w+)')
-        model_name = p.search(cmd).group(1)
+        #p = re.compile('--model_name (\w+)')
+        #model_name = p.search(cmd).group(1)
 
         # Repeat experiments
         for i in range(args.base_seed, args.base_seed + args.n):
@@ -87,32 +89,52 @@ def main():
                 info = find_info(result)
                 info['Seed'] = str(i)
                 info['Run CMD'] = command
-                if args.n == 1:
-                    info['Model'] = model_name
+                #if args.n == 1:
+                #    info['Model'] = model_name
                 row = [info[c] if c in info else '' for c in columns]
                 df.loc[len(df)] = row
-                df.to_csv(os.path.join(args.log_dir, args.out_f), index=False)
-                print(df[columns[:5]])
+                #df.to_csv(os.path.join(args.log_dir, args.out_f), index=False)
+                #print(df[columns[:5]])
             except Exception as e:
                 traceback.print_exc()
                 continue
 
         # Average results
-        if args.n > 1:
-            info = {'Model': model_name}
+        if args.n > 0:
+            #info = {'Model': model_name}
             tests = df['Test'].tolist()[-args.n:]
             tests = [[float(m.split(':')[1]) for m in t.split(',')] for t in tests]
             avgs = ['{:<.4f}'.format(np.average([t[mi] for t in tests])) for mi in range(len(tests[0]))]
-            info['Test'] = ','.join(avgs)
-            row = [info[c] if c in info else '' for c in columns]
-            df.loc[len(df)] = row
-            print(df[columns[:5]])
-        for i in range(3):
-            row = [''] * len(columns)
-            df.loc[len(df)] = row
+            metric_columns = [x[:-7] for x in row[1].split(',')]
+            p = re.compile('--model_name (\w+)')
+            model_name = p.search(cmd).group(1)
+            n = cmd.find('--dataset')
+            dataset = cmd[n+len('--dataset'):]
+            if cmd.find('--time_features') != -1:
+                time_features = cmd[cmd.find('--time_features')+len('--time_features'):cmd.find('--epoch')]
+            else:
+                time_features = ''
+            if cmd.find('--continuous_time') != -1:
+                continuous_time = cmd[cmd.find('--continuous_time')+len('--continuous_time'):cmd.find('--topk')]
+            else:
+                continuous_time = 0
+            if cmd.find('--time_diffs') != -1:
+                time_diffs = cmd[cmd.find('--time_diffs')+len('--time_diffs'):cmd.find('--emb_size')]
+            else:
+                time_diffs = 0
+            if len(col) == 0:
+                col = ['model_name', 'dataset', 'time_features', 'continuous_time', 'time_diffs'] + metric_columns
+            res_df.loc[res_df.shape[0], col] = [model_name, dataset, time_features, continuous_time, time_diffs] + avgs
+            #info['Test'] = ','.join(avgs)
+            #row = [info[c] if c in info else '' for c in columns]
+            #df.loc[len(df)] = row
+            #print(df[columns[:5]])
+        #for i in range(3):
+         #   row = [''] * len(columns)
+         #   df.loc[len(df)] = row
 
         # Save results
-        df.to_csv(os.path.join(args.log_dir, args.out_f), index=False)
+        res_df.to_csv(os.path.join(args.log_dir, args.out_f), index=False)
 
 
 if __name__ == '__main__':

@@ -117,6 +117,7 @@ class BaseRunner(object):
         try:
             for epoch in range(self.epoch):
                 # Fit
+                print('epoch:', epoch)
                 self._check_time()
                 gc.collect()
                 torch.cuda.empty_cache()

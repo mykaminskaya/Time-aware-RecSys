@@ -54,9 +54,8 @@ class SASRec(SequentialModel):
         self.len_range = torch.from_numpy(np.arange(self.max_his)).to(self.device)
 
     def _define_params(self):
-        sz = self.emb_size * (len(self.time_features) + 1) + self.continuous_time + self.time_diffs
+        self.sz = self.emb_size * (len(self.time_features) + 1) + self.continuous_time + self.time_diffs
         self.i_embeddings = nn.Embedding(self.item_num, self.emb_size)
-        self.i1_embeddings = nn.Embedding(self.item_num, sz)
         self.p_embeddings = nn.Embedding(self.max_his + 1, self.emb_size)
 
         for f in self.time_features:
@@ -72,7 +71,7 @@ class SASRec(SequentialModel):
                 raise ValueError('Undefined time feature: {}.'.format(f))
 
         self.transformer_block = nn.ModuleList([
-            layers.TransformerLayer(d_model=sz, d_ff=self.emb_size, n_heads=self.num_heads,
+            layers.TransformerLayer(d_model=self.emb_size, d_ff=self.emb_size, n_heads=self.num_heads,
                                     dropout=self.dropout, kq_same=False)
             for _ in range(self.num_layers)
         ])
@@ -125,6 +124,8 @@ class SASRec(SequentialModel):
         causality_mask = np.tril(np.ones((1, 1, seq_len, seq_len), dtype=np.int))
         attn_mask = torch.from_numpy(causality_mask).to(self.device)
         # attn_mask = valid_his.view(batch_size, 1, 1, seq_len)
+        lin = nn.Linear(self.sz, self.emb_size).to(self.device)
+        his_vectors = lin(his_vectors)
         for block in self.transformer_block:
             his_vectors = block(his_vectors, attn_mask)
         his_vectors = his_vectors * valid_his[:, :, None].float()
@@ -133,6 +134,6 @@ class SASRec(SequentialModel):
         # his_vector = his_vectors.sum(1) / lengths[:, None].float()
         # ↑ average pooling is shown to be more effective than the most recent embedding
 
-        i_vectors = self.i1_embeddings(i_ids)
+        i_vectors = self.i_embeddings(i_ids)
         prediction = (his_vector[:, None, :] * i_vectors).sum(-1)
         return {'prediction': prediction.view(batch_size, -1)}

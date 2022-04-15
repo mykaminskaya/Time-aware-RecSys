@@ -42,6 +42,7 @@ class GRU4Rec(SequentialModel):
             self.time_features = []
         self.continuous_time = args.continuous_time
         self.time_diffs = args.time_diffs
+        self.sz = self.emb_size*(len(self.time_features)+1)+self.continuous_time+self.time_diffs
         super().__init__(args, corpus)
 
     def _define_params(self):
@@ -58,7 +59,7 @@ class GRU4Rec(SequentialModel):
             else:
                 raise ValueError('Undefined time feature: {}.'.format(f))
         
-        self.rnn = nn.GRU(input_size=self.emb_size*(len(self.time_features)+1)+self.continuous_time+self.time_diffs, hidden_size=self.hidden_size, batch_first=True)
+        self.rnn = nn.GRU(input_size=self.sz, hidden_size=self.hidden_size, batch_first=True)
         # self.pred_embeddings = nn.Embedding(self.item_num, self.hidden_size)
         self.out = nn.Linear(self.hidden_size, self.emb_size)
 
@@ -96,7 +97,6 @@ class GRU4Rec(SequentialModel):
         if self.time_diffs == 1:
             his_vectors = torch.cat((his_vectors, norm_diff.reshape(norm_diff.shape[0], norm_diff.shape[1], 1)), 2)
             
-        
 
         # Sort and Pack
         sort_his_lengths, sort_idx = torch.topk(lengths, k=len(lengths))

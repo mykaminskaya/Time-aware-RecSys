@@ -16,7 +16,7 @@ from typing import List
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run")
-    parser.add_argument('--log_dir', nargs='?', default='../log/',
+    parser.add_argument('--log_dir', nargs='?', default='/m.y.kaminskaya/ReChorus/log/',
                         help='Log save dir.')
     parser.add_argument('--cmd_dir', nargs='?', default='./',
                         help='Command dir.')

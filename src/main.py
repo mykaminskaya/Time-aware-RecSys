@@ -70,7 +70,6 @@ def main():
     data_dict = dict()
     for phase in ['train', 'dev', 'test']:
         data_dict[phase] = model_name.Dataset(model, corpus, phase)
-        print(1)
     runner = runner_name(args)
     # logging.info('Test Before Training: ' + runner.print_res(data_dict['test']))
     if args.load > 0:
@@ -84,6 +83,7 @@ def main():
 
 
 if __name__ == '__main__':
+    print('main')
     init_parser = argparse.ArgumentParser(description='Model')
     init_parser.add_argument('--model_name', type=str, default='BPR', help='Choose a model to run.')
     init_args, init_extras = init_parser.parse_known_args()
@@ -92,6 +92,7 @@ if __name__ == '__main__':
     runner_name = eval('{0}.{0}'.format(model_name.runner))
 
     # Args
+    print('args')
     parser = argparse.ArgumentParser(description='')
     parser = parse_global_args(parser)
     parser = reader_name.parse_data_args(parser)
@@ -100,6 +101,7 @@ if __name__ == '__main__':
     args, extras = parser.parse_known_args()
 
     # Logging configuration
+    print('config')
     log_args = [init_args.model_name, args.dataset, str(args.random_seed)]
     for arg in ['lr', 'l2'] + model_name.extra_log_args:
         log_args.append(arg + '=' + str(eval('args.' + arg)))
@@ -113,5 +115,7 @@ if __name__ == '__main__':
     logging.basicConfig(filename=args.log_file, level=args.verbose)
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
     logging.info(init_args)
+
+    print('st')
 
     main()

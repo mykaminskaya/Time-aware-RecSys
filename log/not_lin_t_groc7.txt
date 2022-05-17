@@ -1,0 +1,87 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-11 06:41:03 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ diff            | 0                   
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time            | 1                   
+ time_diffs      | 0                   
+ time_features   |                     
+ time_max        | 512                 
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 648695
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_k_embeddings): Embedding(21, 65)
+  (p_v_embeddings): Embedding(21, 65)
+  (t_k_embeddings): Embedding(513, 65)
+  (t_v_embeddings): Embedding(513, 65)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [44.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.4 s] *
+INFO:root:Epoch 2     loss=0.6931 [41.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.4 s] *
+INFO:root:Epoch 3     loss=0.6931 [41.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.1 s] *
+INFO:root:Epoch 4     loss=0.6931 [40.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.4 s] *
+INFO:root:Epoch 5     loss=0.6931 [42.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.4 s] *
+INFO:root:Epoch 6     loss=0.6931 [42.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.1 s] *
+INFO:root:Epoch 7     loss=0.6931 [41.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.5 s] *
+INFO:root:Epoch 8     loss=0.6931 [43.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.2 s] *
+INFO:root:Epoch 9     loss=0.6931 [43.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.5 s] *
+INFO:root:Epoch 10    loss=0.6931 [41.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.3 s] *
+INFO:root:Epoch 11    loss=0.6926 [40.8 s]    dev=(HR@1:0.9987,MNAP@1:0.9987,NDCG@1:0.9987) [4.2 s]
+INFO:root:Epoch 12    loss=0.6917 [41.5 s]    dev=(HR@1:0.9130,MNAP@1:0.9130,NDCG@1:0.9130) [3.2 s]
+INFO:root:Epoch 13    loss=0.6888 [41.4 s]    dev=(HR@1:0.8588,MNAP@1:0.8588,NDCG@1:0.8588) [3.4 s]
+INFO:root:Epoch 14    loss=0.7102 [42.0 s]    dev=(HR@1:0.6320,MNAP@1:0.6320,NDCG@1:0.6320) [3.5 s]
+INFO:root:Epoch 15    loss=nan [41.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.3 s] *
+INFO:root:Epoch 16    loss=nan [41.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.3 s] *
+INFO:root:Epoch 17    loss=nan [40.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.4 s] *
+INFO:root:Epoch 18    loss=nan [41.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.3 s] *
+INFO:root:Epoch 19    loss=nan [40.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.3 s] *
+INFO:root:Epoch 20    loss=nan [40.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.2 s] *
+INFO:root:Epoch 21    loss=nan [39.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.1 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [941.9 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__Grocery_and_Gourmet_Food1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 06:56:51 ---------------------------------------------

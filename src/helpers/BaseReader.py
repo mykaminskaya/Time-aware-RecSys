@@ -38,7 +38,7 @@ class BaseReader(object):
             self.data_df[key] = utils.eval_list_columns(self.data_df[key])
 
         logging.info('Counting dataset statistics...')
-        self.all_df = pd.concat([df[['user_id', 'item_id', 'time', 'time1', 'diff1']] for df in self.data_df.values()])
+        self.all_df = pd.concat([df[['user_id', 'item_id', 'time', 'time1', 'diff1', 'diff']] for df in self.data_df.values()])
         self.n_users, self.n_items = self.all_df['user_id'].max() + 1, self.all_df['item_id'].max() + 1
         for key in ['dev', 'test']:
             if 'neg_items' in self.data_df[key]:
@@ -61,13 +61,13 @@ class BaseReader(object):
         for key in ['train', 'dev', 'test']:
             df = self.data_df[key]
             position = list()
-            for uid, iid, t, t1, d1 in zip(df['user_id'], df['item_id'], df['time'], df['time1'], df['diff1']):
+            for uid, iid, t, t1, d1, d in zip(df['user_id'], df['item_id'], df['time'], df['time1'], df['diff1'], df['diff']):
                 if uid not in self.user_his:
                     self.user_his[uid] = list()
                     self.train_clicked_set[uid] = set()
                     self.clicked_set[uid] = set()
                 position.append(len(self.user_his[uid]))
-                self.user_his[uid].append((iid, t, t1, d1))
+                self.user_his[uid].append((iid, t, t1, d1, d))
                 if key == 'train':
                     self.train_clicked_set[uid].add(iid)
                 self.clicked_set[uid].add(iid)

@@ -52,6 +52,7 @@ class BaseModel(nn.Module):
     """
     Key Methods
     """
+
     def _define_params(self) -> NoReturn:
         pass
 
@@ -68,6 +69,7 @@ class BaseModel(nn.Module):
     """
     Auxiliary Methods
     """
+
     def customize_parameters(self) -> list:
         # customize optimizer settings for different parameters
         weight_p, bias_p = [], []
@@ -105,6 +107,7 @@ class BaseModel(nn.Module):
     """
     Define Dataset Class
     """
+
     class Dataset(BaseDataset):
         def __init__(self, model, corpus, phase: str):
             self.model = model  # model object reference
@@ -207,7 +210,14 @@ class GeneralModel(BaseModel):
             item_ids = np.concatenate([[target_item], neg_items])
             feed_dict = {
                 'user_id': user_id,
-                'item_id': item_ids
+                'item_id': item_ids,
+                'days': datetime.fromtimestamp(self.data['time'][index]).day - 1,
+                'months': datetime.fromtimestamp(self.data['time'][index]).month - 1,
+                'weekdays': datetime.fromtimestamp(self.data['time'][index]).weekday(),
+                'normalized_times': self.data['time1'][index],
+                'normalized_diffs': self.data['diff1'][index],
+                'times': self.data['time'][index],
+                'diffs': self.data['diff'][index]
             }
             return feed_dict
 
@@ -247,9 +257,10 @@ class SequentialModel(GeneralModel):
             user_seq = self.corpus.user_his[feed_dict['user_id']][:pos]
             if self.model.history_max > 0:
                 user_seq = user_seq[-self.model.history_max:]
+
             feed_dict['history_items'] = np.array([x[0] for x in user_seq])
             feed_dict['history_times'] = np.array([x[1] for x in user_seq])
-            feed_dict['history_hours'] = np.array([datetime.fromtimestamp(x[1]).hour for x in user_seq])
+            feed_dict['history_diffs'] = np.array([x[4] for x in user_seq])
             feed_dict['history_days'] = np.array([datetime.fromtimestamp(x[1]).day - 1 for x in user_seq])
             feed_dict['history_months'] = np.array([datetime.fromtimestamp(x[1]).month - 1 for x in user_seq])
             feed_dict['history_weekdays'] = np.array([datetime.fromtimestamp(x[1]).weekday() for x in user_seq])

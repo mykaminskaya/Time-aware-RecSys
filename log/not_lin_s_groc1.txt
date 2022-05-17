@@ -1,0 +1,162 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 12:20:25 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 580619
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6053 [25.2 s]    dev=(HR@1:0.0778,MNAP@1:0.0778,NDCG@1:0.0778) [3.0 s] *
+INFO:root:Epoch 2     loss=0.4843 [24.9 s]    dev=(HR@1:0.0791,MNAP@1:0.0791,NDCG@1:0.0791) [2.4 s] *
+INFO:root:Epoch 3     loss=0.4497 [24.7 s]    dev=(HR@1:0.0781,MNAP@1:0.0781,NDCG@1:0.0781) [2.5 s]
+INFO:root:Epoch 4     loss=0.4335 [24.9 s]    dev=(HR@1:0.0821,MNAP@1:0.0821,NDCG@1:0.0821) [2.6 s] *
+INFO:root:Epoch 5     loss=0.4148 [24.4 s]    dev=(HR@1:0.0947,MNAP@1:0.0947,NDCG@1:0.0947) [2.7 s] *
+INFO:root:Epoch 6     loss=0.3969 [24.7 s]    dev=(HR@1:0.1033,MNAP@1:0.1033,NDCG@1:0.1033) [2.8 s] *
+INFO:root:Epoch 7     loss=0.3809 [25.2 s]    dev=(HR@1:0.1124,MNAP@1:0.1124,NDCG@1:0.1124) [2.6 s] *
+INFO:root:Epoch 8     loss=0.3656 [25.9 s]    dev=(HR@1:0.1208,MNAP@1:0.1208,NDCG@1:0.1208) [2.6 s] *
+INFO:root:Epoch 9     loss=0.3510 [25.8 s]    dev=(HR@1:0.1293,MNAP@1:0.1293,NDCG@1:0.1293) [2.4 s] *
+INFO:root:Epoch 10    loss=0.3393 [25.3 s]    dev=(HR@1:0.1334,MNAP@1:0.1334,NDCG@1:0.1334) [2.6 s] *
+INFO:root:Epoch 11    loss=0.3264 [25.5 s]    dev=(HR@1:0.1372,MNAP@1:0.1372,NDCG@1:0.1372) [2.5 s] *
+INFO:root:Epoch 12    loss=0.3156 [25.9 s]    dev=(HR@1:0.1414,MNAP@1:0.1414,NDCG@1:0.1414) [2.9 s] *
+INFO:root:Epoch 13    loss=0.3050 [24.9 s]    dev=(HR@1:0.1414,MNAP@1:0.1414,NDCG@1:0.1414) [2.9 s] *
+INFO:root:Epoch 14    loss=0.2930 [25.3 s]    dev=(HR@1:0.1467,MNAP@1:0.1467,NDCG@1:0.1467) [2.7 s] *
+INFO:root:Epoch 15    loss=0.2820 [24.9 s]    dev=(HR@1:0.1490,MNAP@1:0.1490,NDCG@1:0.1490) [2.8 s] *
+INFO:root:Epoch 16    loss=0.2692 [26.2 s]    dev=(HR@1:0.1511,MNAP@1:0.1511,NDCG@1:0.1511) [2.7 s] *
+INFO:root:Epoch 17    loss=0.2578 [25.2 s]    dev=(HR@1:0.1575,MNAP@1:0.1575,NDCG@1:0.1575) [2.7 s] *
+INFO:root:Epoch 18    loss=0.2480 [25.3 s]    dev=(HR@1:0.1601,MNAP@1:0.1601,NDCG@1:0.1601) [2.8 s] *
+INFO:root:Epoch 19    loss=0.2364 [27.4 s]    dev=(HR@1:0.1592,MNAP@1:0.1592,NDCG@1:0.1592) [3.1 s]
+INFO:root:Epoch 20    loss=0.2278 [28.2 s]    dev=(HR@1:0.1689,MNAP@1:0.1689,NDCG@1:0.1689) [3.1 s] *
+INFO:root:Epoch 21    loss=0.2163 [27.7 s]    dev=(HR@1:0.1715,MNAP@1:0.1715,NDCG@1:0.1715) [3.1 s] *
+INFO:root:Epoch 22    loss=0.2072 [28.1 s]    dev=(HR@1:0.1752,MNAP@1:0.1752,NDCG@1:0.1752) [3.1 s] *
+INFO:root:Epoch 23    loss=0.2006 [28.0 s]    dev=(HR@1:0.1765,MNAP@1:0.1765,NDCG@1:0.1765) [3.0 s] *
+INFO:root:Epoch 24    loss=0.1894 [28.5 s]    dev=(HR@1:0.1858,MNAP@1:0.1858,NDCG@1:0.1858) [3.0 s] *
+INFO:root:Epoch 25    loss=0.1821 [28.3 s]    dev=(HR@1:0.1868,MNAP@1:0.1868,NDCG@1:0.1868) [3.1 s] *
+INFO:root:Epoch 26    loss=0.1735 [28.3 s]    dev=(HR@1:0.1915,MNAP@1:0.1915,NDCG@1:0.1915) [3.1 s] *
+INFO:root:Epoch 27    loss=0.1672 [28.3 s]    dev=(HR@1:0.1942,MNAP@1:0.1942,NDCG@1:0.1942) [3.1 s] *
+INFO:root:Epoch 28    loss=0.1593 [28.0 s]    dev=(HR@1:0.2000,MNAP@1:0.2000,NDCG@1:0.2000) [3.1 s] *
+INFO:root:Epoch 29    loss=0.1523 [28.2 s]    dev=(HR@1:0.2035,MNAP@1:0.2035,NDCG@1:0.2035) [3.0 s] *
+INFO:root:Epoch 30    loss=0.1446 [28.3 s]    dev=(HR@1:0.2025,MNAP@1:0.2025,NDCG@1:0.2025) [2.8 s]
+INFO:root:Epoch 31    loss=0.1392 [28.1 s]    dev=(HR@1:0.2028,MNAP@1:0.2028,NDCG@1:0.2028) [3.1 s]
+INFO:root:Epoch 32    loss=0.1326 [28.3 s]    dev=(HR@1:0.2112,MNAP@1:0.2112,NDCG@1:0.2112) [2.9 s] *
+INFO:root:Epoch 33    loss=0.1270 [27.7 s]    dev=(HR@1:0.2103,MNAP@1:0.2103,NDCG@1:0.2103) [3.3 s]
+INFO:root:Epoch 34    loss=0.1217 [27.5 s]    dev=(HR@1:0.2164,MNAP@1:0.2164,NDCG@1:0.2164) [2.9 s] *
+INFO:root:Epoch 35    loss=0.1161 [27.9 s]    dev=(HR@1:0.2141,MNAP@1:0.2141,NDCG@1:0.2141) [3.0 s]
+INFO:root:Epoch 36    loss=0.1100 [27.6 s]    dev=(HR@1:0.2155,MNAP@1:0.2155,NDCG@1:0.2155) [2.8 s]
+INFO:root:Epoch 37    loss=0.1071 [27.6 s]    dev=(HR@1:0.2194,MNAP@1:0.2194,NDCG@1:0.2194) [2.9 s] *
+INFO:root:Epoch 38    loss=0.1022 [28.7 s]    dev=(HR@1:0.2211,MNAP@1:0.2211,NDCG@1:0.2211) [3.0 s] *
+INFO:root:Epoch 39    loss=0.0977 [27.8 s]    dev=(HR@1:0.2244,MNAP@1:0.2244,NDCG@1:0.2244) [3.0 s] *
+INFO:root:Epoch 40    loss=0.0938 [27.6 s]    dev=(HR@1:0.2240,MNAP@1:0.2240,NDCG@1:0.2240) [3.0 s]
+INFO:root:Epoch 41    loss=0.0892 [27.4 s]    dev=(HR@1:0.2247,MNAP@1:0.2247,NDCG@1:0.2247) [3.0 s] *
+INFO:root:Epoch 42    loss=0.0855 [29.0 s]    dev=(HR@1:0.2276,MNAP@1:0.2276,NDCG@1:0.2276) [3.0 s] *
+INFO:root:Epoch 43    loss=0.0825 [27.7 s]    dev=(HR@1:0.2295,MNAP@1:0.2295,NDCG@1:0.2295) [3.1 s] *
+INFO:root:Epoch 44    loss=0.0791 [28.3 s]    dev=(HR@1:0.2281,MNAP@1:0.2281,NDCG@1:0.2281) [2.8 s]
+INFO:root:Epoch 45    loss=0.0764 [28.4 s]    dev=(HR@1:0.2298,MNAP@1:0.2298,NDCG@1:0.2298) [3.0 s] *
+INFO:root:Epoch 46    loss=0.0731 [27.6 s]    dev=(HR@1:0.2336,MNAP@1:0.2336,NDCG@1:0.2336) [2.9 s] *
+INFO:root:Epoch 47    loss=0.0700 [28.0 s]    dev=(HR@1:0.2299,MNAP@1:0.2299,NDCG@1:0.2299) [2.9 s]
+INFO:root:Epoch 48    loss=0.0684 [27.9 s]    dev=(HR@1:0.2313,MNAP@1:0.2313,NDCG@1:0.2313) [3.0 s]
+INFO:root:Epoch 49    loss=0.0654 [28.3 s]    dev=(HR@1:0.2330,MNAP@1:0.2330,NDCG@1:0.2330) [2.9 s]
+INFO:root:Epoch 50    loss=0.0628 [28.1 s]    dev=(HR@1:0.2345,MNAP@1:0.2345,NDCG@1:0.2345) [3.1 s] *
+INFO:root:Epoch 51    loss=0.0606 [28.3 s]    dev=(HR@1:0.2320,MNAP@1:0.2320,NDCG@1:0.2320) [3.1 s]
+INFO:root:Epoch 52    loss=0.0583 [28.2 s]    dev=(HR@1:0.2320,MNAP@1:0.2320,NDCG@1:0.2320) [2.8 s]
+INFO:root:Epoch 53    loss=0.0573 [28.0 s]    dev=(HR@1:0.2332,MNAP@1:0.2332,NDCG@1:0.2332) [3.1 s]
+INFO:root:Epoch 54    loss=0.0540 [27.4 s]    dev=(HR@1:0.2340,MNAP@1:0.2340,NDCG@1:0.2340) [3.2 s]
+INFO:root:Epoch 55    loss=0.0533 [29.2 s]    dev=(HR@1:0.2373,MNAP@1:0.2373,NDCG@1:0.2373) [3.5 s] *
+INFO:root:Epoch 56    loss=0.0507 [27.7 s]    dev=(HR@1:0.2357,MNAP@1:0.2357,NDCG@1:0.2357) [3.0 s]
+INFO:root:Epoch 57    loss=0.0490 [28.1 s]    dev=(HR@1:0.2374,MNAP@1:0.2374,NDCG@1:0.2374) [3.4 s] *
+INFO:root:Epoch 58    loss=0.0477 [27.7 s]    dev=(HR@1:0.2369,MNAP@1:0.2369,NDCG@1:0.2369) [2.9 s]
+INFO:root:Epoch 59    loss=0.0457 [27.9 s]    dev=(HR@1:0.2379,MNAP@1:0.2379,NDCG@1:0.2379) [2.9 s] *
+INFO:root:Epoch 60    loss=0.0448 [27.5 s]    dev=(HR@1:0.2361,MNAP@1:0.2361,NDCG@1:0.2361) [3.0 s]
+INFO:root:Epoch 61    loss=0.0430 [27.8 s]    dev=(HR@1:0.2381,MNAP@1:0.2381,NDCG@1:0.2381) [2.9 s] *
+INFO:root:Epoch 62    loss=0.0418 [27.6 s]    dev=(HR@1:0.2374,MNAP@1:0.2374,NDCG@1:0.2374) [2.9 s]
+INFO:root:Epoch 63    loss=0.0412 [27.9 s]    dev=(HR@1:0.2360,MNAP@1:0.2360,NDCG@1:0.2360) [2.9 s]
+INFO:root:Epoch 64    loss=0.0396 [27.7 s]    dev=(HR@1:0.2374,MNAP@1:0.2374,NDCG@1:0.2374) [2.8 s]
+INFO:root:Epoch 65    loss=0.0388 [27.5 s]    dev=(HR@1:0.2370,MNAP@1:0.2370,NDCG@1:0.2370) [2.7 s]
+INFO:root:Epoch 66    loss=0.0373 [27.7 s]    dev=(HR@1:0.2370,MNAP@1:0.2370,NDCG@1:0.2370) [2.9 s]
+INFO:root:Epoch 67    loss=0.0377 [27.4 s]    dev=(HR@1:0.2331,MNAP@1:0.2331,NDCG@1:0.2331) [2.7 s]
+INFO:root:Epoch 68    loss=0.0360 [27.7 s]    dev=(HR@1:0.2376,MNAP@1:0.2376,NDCG@1:0.2376) [2.9 s]
+INFO:root:Epoch 69    loss=0.0351 [27.2 s]    dev=(HR@1:0.2394,MNAP@1:0.2394,NDCG@1:0.2394) [2.8 s] *
+INFO:root:Epoch 70    loss=0.0341 [27.7 s]    dev=(HR@1:0.2355,MNAP@1:0.2355,NDCG@1:0.2355) [2.9 s]
+INFO:root:Epoch 71    loss=0.0328 [27.5 s]    dev=(HR@1:0.2344,MNAP@1:0.2344,NDCG@1:0.2344) [2.8 s]
+INFO:root:Epoch 72    loss=0.0326 [28.1 s]    dev=(HR@1:0.2341,MNAP@1:0.2341,NDCG@1:0.2341) [2.9 s]
+INFO:root:Epoch 73    loss=0.0316 [27.4 s]    dev=(HR@1:0.2357,MNAP@1:0.2357,NDCG@1:0.2357) [3.3 s]
+INFO:root:Epoch 74    loss=0.0301 [27.0 s]    dev=(HR@1:0.2360,MNAP@1:0.2360,NDCG@1:0.2360) [2.9 s]
+INFO:root:Epoch 75    loss=0.0299 [26.9 s]    dev=(HR@1:0.2369,MNAP@1:0.2369,NDCG@1:0.2369) [2.8 s]
+INFO:root:Epoch 76    loss=0.0293 [27.5 s]    dev=(HR@1:0.2368,MNAP@1:0.2368,NDCG@1:0.2368) [3.0 s]
+INFO:root:Epoch 77    loss=0.0288 [26.6 s]    dev=(HR@1:0.2346,MNAP@1:0.2346,NDCG@1:0.2346) [2.8 s]
+INFO:root:Epoch 78    loss=0.0282 [26.8 s]    dev=(HR@1:0.2355,MNAP@1:0.2355,NDCG@1:0.2355) [2.7 s]
+INFO:root:Epoch 79    loss=0.0271 [26.1 s]    dev=(HR@1:0.2364,MNAP@1:0.2364,NDCG@1:0.2364) [2.8 s]
+INFO:root:Epoch 80    loss=0.0272 [27.1 s]    dev=(HR@1:0.2382,MNAP@1:0.2382,NDCG@1:0.2382) [2.7 s]
+INFO:root:Epoch 81    loss=0.0261 [26.8 s]    dev=(HR@1:0.2359,MNAP@1:0.2359,NDCG@1:0.2359) [2.9 s]
+INFO:root:Epoch 82    loss=0.0261 [26.7 s]    dev=(HR@1:0.2394,MNAP@1:0.2394,NDCG@1:0.2394) [2.9 s] *
+INFO:root:Epoch 83    loss=0.0261 [26.5 s]    dev=(HR@1:0.2368,MNAP@1:0.2368,NDCG@1:0.2368) [2.9 s]
+INFO:root:Epoch 84    loss=0.0249 [25.8 s]    dev=(HR@1:0.2347,MNAP@1:0.2347,NDCG@1:0.2347) [2.7 s]
+INFO:root:Epoch 85    loss=0.0246 [26.3 s]    dev=(HR@1:0.2371,MNAP@1:0.2371,NDCG@1:0.2371) [2.7 s]
+INFO:root:Epoch 86    loss=0.0241 [26.4 s]    dev=(HR@1:0.2355,MNAP@1:0.2355,NDCG@1:0.2355) [2.8 s]
+INFO:root:Epoch 87    loss=0.0246 [26.5 s]    dev=(HR@1:0.2353,MNAP@1:0.2353,NDCG@1:0.2353) [2.6 s]
+INFO:root:Epoch 88    loss=0.0232 [26.4 s]    dev=(HR@1:0.2360,MNAP@1:0.2360,NDCG@1:0.2360) [2.8 s]
+INFO:root:Epoch 89    loss=0.0229 [26.5 s]    dev=(HR@1:0.2340,MNAP@1:0.2340,NDCG@1:0.2340) [2.6 s]
+INFO:root:Epoch 90    loss=0.0225 [26.6 s]    dev=(HR@1:0.2331,MNAP@1:0.2331,NDCG@1:0.2331) [3.0 s]
+INFO:root:Epoch 91    loss=0.0229 [26.6 s]    dev=(HR@1:0.2359,MNAP@1:0.2359,NDCG@1:0.2359) [2.8 s]
+INFO:root:Epoch 92    loss=0.0220 [25.8 s]    dev=(HR@1:0.2323,MNAP@1:0.2323,NDCG@1:0.2323) [2.8 s]
+INFO:root:Epoch 93    loss=0.0217 [25.6 s]    dev=(HR@1:0.2315,MNAP@1:0.2315,NDCG@1:0.2315) [3.1 s]
+INFO:root:Epoch 94    loss=0.0213 [25.6 s]    dev=(HR@1:0.2340,MNAP@1:0.2340,NDCG@1:0.2340) [2.8 s]
+INFO:root:Epoch 95    loss=0.0210 [26.1 s]    dev=(HR@1:0.2337,MNAP@1:0.2337,NDCG@1:0.2337) [2.8 s]
+INFO:root:Epoch 96    loss=0.0206 [25.9 s]    dev=(HR@1:0.2323,MNAP@1:0.2323,NDCG@1:0.2323) [2.7 s]
+INFO:root:Epoch 97    loss=0.0202 [26.2 s]    dev=(HR@1:0.2323,MNAP@1:0.2323,NDCG@1:0.2323) [2.8 s]
+INFO:root:Epoch 98    loss=0.0205 [25.6 s]    dev=(HR@1:0.2339,MNAP@1:0.2339,NDCG@1:0.2339) [3.0 s]
+INFO:root:Epoch 99    loss=0.0200 [25.5 s]    dev=(HR@1:0.2321,MNAP@1:0.2321,NDCG@1:0.2321) [3.0 s]
+INFO:root:Epoch 100   loss=0.0193 [26.2 s]    dev=(HR@1:0.2351,MNAP@1:0.2351,NDCG@1:0.2351) [2.7 s]
+INFO:root:Epoch 101   loss=0.0194 [26.4 s]    dev=(HR@1:0.2323,MNAP@1:0.2323,NDCG@1:0.2323) [2.9 s]
+INFO:root:Epoch 102   loss=0.0197 [27.4 s]    dev=(HR@1:0.2345,MNAP@1:0.2345,NDCG@1:0.2345) [2.8 s]
+INFO:root:Early stop at 102 based on dev result.
+INFO:root:
+Best Iter(dev)=   82	 dev=(HR@1:0.2394,MNAP@1:0.2394,NDCG@1:0.2394) [3050.4 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:0.2007,MNAP@1:0.2007,NDCG@1:0.2007,HR@5:0.3966,MNAP@5:0.2731,NDCG@5:0.3038,HR@10:0.4876,MNAP@10:0.2852,NDCG@10:0.3332,HR@15:0.5521,MNAP@15:0.2903,NDCG@15:0.3503,HR@20:0.6036,MNAP@20:0.2932,NDCG@20:0.3625)
+INFO:root:
+--------------------------------------------- END: 2022-05-10 13:11:21 ---------------------------------------------

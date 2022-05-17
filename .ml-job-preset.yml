@@ -2,7 +2,7 @@ job:
   time_limit: 60h0m0s # после какого времени убить наш процесс
   flavor: standard-1x # ресурс, который нам дан. v100-1x - 1 gpu, standard-1x - 8 cpu без gpu
   generate_name: recsys-research
-  image: docker-internal.tcsbank.ru/recsys/default-gpu-pack:python3.7
+  image: docker-hosted.artifactory.tcsbank.ru/recsys/default-gpu-pack:python3.7
   entrypoint: ""
   input:
   - type: files
@@ -13,7 +13,7 @@ job:
     src: "//fs-userdata/new_products$/m.y.kaminskaya/ReChorus/data/"
     dst: /home/data/
     user: svc_ml_team
-    pass: #
+    pass:
   - type: files
     src: .
     dst: /home/
@@ -23,7 +23,7 @@ job:
     src: "/m.y.kaminskaya/ReChorus/log/"
     dst: "//fs-userdata/new_products$/m.y.kaminskaya/ReChorus/log/"
     user: svc_ml_team
-    pass: #
+    pass:
   args:
   - bash
   - -c
@@ -31,4 +31,4 @@ job:
     cd /home && \
     cd src && \
     pip install -r ../requirements.txt && \
-    python3.7 main.py --model_name SASRec --metric 'NDCG,HR,MNAP' --epoch 1 --continuous_time 1 --topk '1,5,10,15,20' --num_layers 1 --num_heads 1 --emb_size 64 --hidden_size 100 --lr 1e-3 --l2 1e-4 --history_max 20 --dataset 'Grocery_and_Gourmet_Food'
+    python3.7 main.py --model_name SASRec --metric 'NDCG,HR,MNAP' --time_features 'weekday' --continuous_time 1 --topk '1,5,10,15,20' --emb_size 64 --num_layers 1 --num_heads 1 --lr 1e-4 --l2 1e-6 --history_max 20 --dataset 'Grocery_and_Gourmet_Food1' --log_file '../../m.y.kaminskaya/ReChorus/log/best_s_groc.txt'

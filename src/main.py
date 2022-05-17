@@ -56,8 +56,9 @@ def main():
         corpus = pickle.load(open(corpus_path, 'rb'))
     else:
         corpus = reader_name(args)
-        logging.info('Save corpus to {}'.format(corpus_path))
-        pickle.dump(corpus, open(corpus_path, 'wb'))
+        p = os.path.join('../', model_name.reader + '.pkl')
+        logging.info('Save corpus to {}'.format(p))
+        pickle.dump(corpus, open(p, 'wb'))
 
     # Define model
     model = model_name(args, corpus)

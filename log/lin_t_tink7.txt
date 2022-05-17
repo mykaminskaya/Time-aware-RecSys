@@ -1,0 +1,102 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 23:05:18 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | tinkoff     
+ diff            | 0           
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 200         
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time            | 1           
+ time_diffs      | 0           
+ time_features   |             
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Reading data from "../data/", dataset = "tinkoff" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 94587, "# item": 2957, "# entry": 537677
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../BaseReader.pkl
+INFO:root:#params: 282944
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(2958, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+  (lin): Linear(in_features=65, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2137 [189.4 s]    dev=(HR@1:0.1584,MNAP@1:0.1584,NDCG@1:0.1584) [4.7 s] *
+INFO:root:Epoch 2     loss=0.1207 [186.0 s]    dev=(HR@1:0.1632,MNAP@1:0.1632,NDCG@1:0.1632) [4.7 s] *
+INFO:root:Epoch 3     loss=0.1150 [184.2 s]    dev=(HR@1:0.1582,MNAP@1:0.1582,NDCG@1:0.1582) [4.8 s]
+INFO:root:Epoch 4     loss=0.1137 [187.8 s]    dev=(HR@1:0.1581,MNAP@1:0.1581,NDCG@1:0.1581) [4.6 s]
+INFO:root:Epoch 5     loss=0.1134 [189.1 s]    dev=(HR@1:0.1597,MNAP@1:0.1597,NDCG@1:0.1597) [4.5 s]
+INFO:root:Epoch 6     loss=0.1120 [192.1 s]    dev=(HR@1:0.1624,MNAP@1:0.1624,NDCG@1:0.1624) [5.3 s]
+INFO:root:Epoch 7     loss=0.1119 [211.1 s]    dev=(HR@1:0.1599,MNAP@1:0.1599,NDCG@1:0.1599) [6.8 s]
+INFO:root:Epoch 8     loss=0.1121 [222.5 s]    dev=(HR@1:0.1610,MNAP@1:0.1610,NDCG@1:0.1610) [5.2 s]
+INFO:root:Epoch 9     loss=0.1128 [204.4 s]    dev=(HR@1:0.1618,MNAP@1:0.1618,NDCG@1:0.1618) [5.1 s]
+INFO:root:Epoch 10    loss=0.1124 [205.2 s]    dev=(HR@1:0.1635,MNAP@1:0.1635,NDCG@1:0.1635) [5.0 s] *
+INFO:root:Epoch 11    loss=0.1121 [204.6 s]    dev=(HR@1:0.1693,MNAP@1:0.1693,NDCG@1:0.1693) [5.0 s] *
+INFO:root:Epoch 12    loss=0.1131 [190.5 s]    dev=(HR@1:0.1589,MNAP@1:0.1589,NDCG@1:0.1589) [4.5 s]
+INFO:root:Epoch 13    loss=0.1123 [189.9 s]    dev=(HR@1:0.1649,MNAP@1:0.1649,NDCG@1:0.1649) [5.2 s]
+INFO:root:Epoch 14    loss=0.1122 [184.0 s]    dev=(HR@1:0.1587,MNAP@1:0.1587,NDCG@1:0.1587) [4.5 s]
+INFO:root:Epoch 15    loss=0.1116 [183.7 s]    dev=(HR@1:0.1648,MNAP@1:0.1648,NDCG@1:0.1648) [4.4 s]
+INFO:root:Epoch 16    loss=0.1120 [183.0 s]    dev=(HR@1:0.1610,MNAP@1:0.1610,NDCG@1:0.1610) [4.5 s]
+INFO:root:Epoch 17    loss=0.1123 [183.5 s]    dev=(HR@1:0.1625,MNAP@1:0.1625,NDCG@1:0.1625) [4.8 s]
+INFO:root:Epoch 18    loss=0.1117 [188.8 s]    dev=(HR@1:0.1614,MNAP@1:0.1614,NDCG@1:0.1614) [4.6 s]
+INFO:root:Epoch 19    loss=0.1130 [191.3 s]    dev=(HR@1:0.1587,MNAP@1:0.1587,NDCG@1:0.1587) [4.7 s]
+INFO:root:Epoch 20    loss=0.1117 [191.8 s]    dev=(HR@1:0.1594,MNAP@1:0.1594,NDCG@1:0.1594) [4.7 s]
+INFO:root:Epoch 21    loss=0.1122 [192.4 s]    dev=(HR@1:0.1640,MNAP@1:0.1640,NDCG@1:0.1640) [4.9 s]
+INFO:root:Epoch 22    loss=0.1124 [191.3 s]    dev=(HR@1:0.1580,MNAP@1:0.1580,NDCG@1:0.1580) [4.7 s]
+INFO:root:Epoch 23    loss=0.1113 [191.0 s]    dev=(HR@1:0.1592,MNAP@1:0.1592,NDCG@1:0.1592) [4.8 s]
+INFO:root:Epoch 24    loss=0.1114 [190.7 s]    dev=(HR@1:0.1586,MNAP@1:0.1586,NDCG@1:0.1586) [4.7 s]
+INFO:root:Epoch 25    loss=0.1120 [190.8 s]    dev=(HR@1:0.1610,MNAP@1:0.1610,NDCG@1:0.1610) [4.6 s]
+INFO:root:Epoch 26    loss=0.1121 [190.2 s]    dev=(HR@1:0.1591,MNAP@1:0.1591,NDCG@1:0.1591) [4.7 s]
+INFO:root:Epoch 27    loss=0.1127 [189.5 s]    dev=(HR@1:0.1611,MNAP@1:0.1611,NDCG@1:0.1611) [4.7 s]
+INFO:root:Epoch 28    loss=0.1121 [188.9 s]    dev=(HR@1:0.1590,MNAP@1:0.1590,NDCG@1:0.1590) [4.7 s]
+INFO:root:Epoch 29    loss=0.1118 [189.1 s]    dev=(HR@1:0.1495,MNAP@1:0.1495,NDCG@1:0.1495) [4.6 s]
+INFO:root:Epoch 30    loss=0.1129 [188.2 s]    dev=(HR@1:0.1614,MNAP@1:0.1614,NDCG@1:0.1614) [4.7 s]
+INFO:root:Epoch 31    loss=0.1115 [187.8 s]    dev=(HR@1:0.1603,MNAP@1:0.1603,NDCG@1:0.1603) [4.6 s]
+INFO:root:Early stop at 31 based on dev result.
+INFO:root:
+Best Iter(dev)=   11	 dev=(HR@1:0.1693,MNAP@1:0.1693,NDCG@1:0.1693) [6102.1 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__tinkoff__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (HR@1:0.1541,MNAP@1:0.1541,NDCG@1:0.1541,HR@5:0.3947,MNAP@5:0.2380,NDCG@5:0.2767,HR@10:0.5439,MNAP@10:0.2582,NDCG@10:0.3253,HR@15:0.6151,MNAP@15:0.2638,NDCG@15:0.3441,HR@20:0.6699,MNAP@20:0.2669,NDCG@20:0.3570)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 00:47:31 ---------------------------------------------

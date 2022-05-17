@@ -34,9 +34,17 @@ class SASRec(SequentialModel):
                             help='Number of attention heads.')
         parser.add_argument('--time_features', type=str, default='',
                             help='')
-        parser.add_argument('--continuous_time', type=int, default=0,
+        parser.add_argument('--norm_timestamps', type=int, default=0,
                             help='')
-        parser.add_argument('--time_diffs', type=int, default=0,
+        parser.add_argument('--norm_diffs', type=int, default=0,
+                            help='')
+        parser.add_argument('--clear_timestamps', type=int, default=0,
+                            help='')
+        parser.add_argument('--clear_diffs', type=int, default=0,
+                            help='')
+        parser.add_argument('--disc_method', type=int, default=1,
+                            help='')
+        parser.add_argument('--cont_method', type=int, default=1,
                             help='')
         return SequentialModel.parse_model_args(parser)
 
@@ -48,20 +56,23 @@ class SASRec(SequentialModel):
         self.time_features = [m.strip().upper() for m in args.time_features.split(',')]
         if self.time_features[0] == '':
             self.time_features = []
-        self.continuous_time = args.continuous_time
-        self.time_diffs = args.time_diffs
+        self.norm_timestamps = args.norm_timestamps
+        self.norm_diffs = args.norm_diffs
+        self.clear_timestamps = args.clear_timestamps
+        self.clear_diffs = args.clear_diffs
+        self.disc_method = args.disc_method
+        self.cont_method = args.cont_method
         super().__init__(args, corpus)
         self.len_range = torch.from_numpy(np.arange(self.max_his)).to(self.device)
 
     def _define_params(self):
-        self.sz = self.emb_size * (len(self.time_features) + 1) + self.continuous_time + self.time_diffs
         self.i_embeddings = nn.Embedding(self.item_num, self.emb_size)
         self.p_embeddings = nn.Embedding(self.max_his + 1, self.emb_size)
+        self.sz = self.emb_size*(len(self.time_features)*(self.disc_method // 2)+1)+(self.norm_timestamps+self.norm_diffs+self.clear_timestamps+self.clear_diffs) * (self.cont_method -1 )
+        self.sz1 = self.emb_size*(len(self.time_features)*int(bool(self.disc_method))+1)+(self.norm_timestamps+self.norm_diffs+self.clear_timestamps+self.clear_diffs)
 
         for f in self.time_features:
-            if f == 'HOUR':
-                self.hours_embeddings = nn.Embedding(24, self.emb_size)
-            elif f == 'MONTH':
+            if f == 'MONTH':
                 self.months_embeddings = nn.Embedding(12, self.emb_size)
             elif f == 'DAY':
                 self.days_embeddings = nn.Embedding(31, self.emb_size)
@@ -71,22 +82,26 @@ class SASRec(SequentialModel):
                 raise ValueError('Undefined time feature: {}.'.format(f))
 
         self.transformer_block = nn.ModuleList([
-            layers.TransformerLayer(d_model=self.emb_size, d_ff=self.emb_size, n_heads=self.num_heads,
+            layers.TransformerLayer(d_model=self.sz, d_ff=self.emb_size, n_heads=self.num_heads,
                                     dropout=self.dropout, kq_same=False)
             for _ in range(self.num_layers)
         ])
+
+        if self.disc_method == 1 or self.cont_method == 1:
+            self.lin = nn.Linear(self.sz1, self.sz).to(self.device)
 
     def forward(self, feed_dict):
         self.check_list = []
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
         lengths = feed_dict['lengths']  # [batch_size]
-        hours = feed_dict['history_hours']
         days = feed_dict['history_days']
         months = feed_dict['history_months']
         weekdays = feed_dict['history_weekdays']
         norm_time = feed_dict['history_normalized_times'].float()
         norm_diff = feed_dict['history_normalized_diffs'].float()
+        times = feed_dict['history_times'].float()
+        diff = feed_dict['history_diffs'].float()
         batch_size, seq_len = history.shape
 
         valid_his = (history > 0).long()
@@ -100,40 +115,78 @@ class SASRec(SequentialModel):
         his_vectors = his_vectors + pos_vectors
 
         # features
+        i_vectors = self.i_embeddings(i_ids)
         for f in self.time_features:
-            if f == 'HOUR':
-                hours_vectors = self.hours_embeddings(hours)
-                his_vectors = torch.cat((his_vectors, hours_vectors), 2)
-            elif f == 'MONTH':
+            if f == 'MONTH':
                 months_vectors = self.months_embeddings(months)
-                his_vectors = torch.cat((his_vectors, months_vectors), 2)
+                if self.disc_method > 0:
+                    his_vectors = torch.cat((his_vectors, months_vectors), 2)
+                else:
+                    his_vectors = his_vectors + months_vectors
+
+                if self.disc_method == 2:
+                    d = torch.tensor(np.tile(feed_dict['months'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                    d = self.months_embeddings(d)
+                    i_vectors = torch.cat((i_vectors, d), 2)
             elif f == 'DAY':
                 days_vectors = self.days_embeddings(days)
-                his_vectors = torch.cat((his_vectors, days_vectors), 2)
+                if self.disc_method > 0:
+                    his_vectors = torch.cat((his_vectors, days_vectors), 2)
+                else:
+                    his_vectors = his_vectors + days_vectors
+
+                if self.disc_method == 2:
+                    d = torch.tensor(np.tile(feed_dict['days'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                    d = self.days_embeddings(d)
+                    i_vectors = torch.cat((i_vectors, d), 2)
             elif f == 'WEEKDAY':
                 weekdays_vectors = self.weekdays_embeddings(weekdays)
-                his_vectors = torch.cat((his_vectors, weekdays_vectors), 2)
+                if self.disc_method > 0:
+                    his_vectors = torch.cat((his_vectors, weekdays_vectors), 2)
+                else:
+                    his_vectors = his_vectors + weekdays_vectors
+
+                if self.disc_method == 2:
+                    d = torch.tensor(np.tile(feed_dict['weekdays'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                    d = self.weekdays_embeddings(d)
+                    i_vectors = torch.cat((i_vectors, d), 2)
             else:
                 raise ValueError('Undefined time feature: {}.'.format(f))
-        if self.continuous_time == 1:
+        if self.norm_timestamps == 1:
             his_vectors = torch.cat((his_vectors, norm_time.reshape(norm_time.shape[0], norm_time.shape[1], 1)), 2)
-        if self.time_diffs == 1:
+            if self.cont_method == 2:
+                t = torch.tensor(np.tile(feed_dict['normalized_times'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                i_vectors = torch.cat((i_vectors, t.reshape(t.shape[0], t.shape[1], 1)), 2)
+        if self.clear_timestamps == 1:
+            his_vectors = torch.cat((his_vectors, time.reshape(time.shape[0], time.shape[1], 1)), 2)
+            if self.cont_method == 2:
+                t = torch.tensor(np.tile(feed_dict['times'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                i_vectors = torch.cat((i_vectors, t.reshape(t.shape[0], t.shape[1], 1)), 2)
+        if self.clear_diffs == 1:
+            his_vectors = torch.cat((his_vectors, diff.reshape(diff.shape[0], diff.shape[1], 1)), 2)
+            if self.cont_method == 2:
+                t = torch.tensor(np.tile(feed_dict['diffs'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                i_vectors = torch.cat((i_vectors, t.reshape(t.shape[0], t.shape[1], 1)), 2)
+        if self.norm_diffs == 1:
             his_vectors = torch.cat((his_vectors, norm_diff.reshape(norm_diff.shape[0], norm_diff.shape[1], 1)), 2)
+            if self.cont_method == 2:
+                t = torch.tensor(np.tile(feed_dict['normalized_diffs'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
+                i_vectors = torch.cat((i_vectors, t.reshape(t.shape[0], t.shape[1], 1)), 2)
 
         # Self-attention
+
+        if self.disc_method == 1 or self.cont_method == 1:
+            his_vectors = self.lin(his_vectors)
         causality_mask = np.tril(np.ones((1, 1, seq_len, seq_len), dtype=np.int))
         attn_mask = torch.from_numpy(causality_mask).to(self.device)
         # attn_mask = valid_his.view(batch_size, 1, 1, seq_len)
-        lin = nn.Linear(self.sz, self.emb_size).to(self.device)
-        his_vectors = lin(his_vectors)
         for block in self.transformer_block:
             his_vectors = block(his_vectors, attn_mask)
         his_vectors = his_vectors * valid_his[:, :, None].float()
 
         his_vector = his_vectors[torch.arange(batch_size), lengths - 1, :]
         # his_vector = his_vectors.sum(1) / lengths[:, None].float()
-        # ↑ average pooling is shown to be more effective than the most recent embedding
+        # Ã¢â€â€˜ average pooling is shown to be more effective than the most recent embedding
 
-        i_vectors = self.i_embeddings(i_ids)
         prediction = (his_vector[:, None, :] * i_vectors).sum(-1)
         return {'prediction': prediction.view(batch_size, -1)}

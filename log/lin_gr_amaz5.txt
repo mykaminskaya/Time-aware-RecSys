@@ -1,0 +1,73 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-07 09:01:52 ---------------------------------------------
+INFO:root:
+=======================================
+ Arguments       | Values              
+=======================================
+ batch_size      | 256                
+ continuous_time | 0                  
+ dataset         | amazon_electronics1
+ dropout         | 0                  
+ early_stop      | 10                 
+ emb_size        | 64                 
+ epoch           | 200                
+ eval_batch_size | 256                
+ gpu             | 0                  
+ hidden_size     | 100                
+ history_max     | 20                 
+ l2              | 0.0001             
+ lr              | 0.001              
+ num_neg         | 1                  
+ num_workers     | 5                  
+ optimizer       | Adam               
+ random_seed     | 0                  
+ test_all        | 0                  
+ time_diffs      | 0                  
+ time_features   | weekday            
+ topk            | 1,5,10,15,20       
+=======================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/amazon_electronics1/BaseReader.pkl
+INFO:root:#params: 4096968
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(63000, 64)
+  (weekdays_embeddings): Embedding(7, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+  (lin): Linear(in_features=128, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.5360 [34.2 s]    dev=(HR@1:0.1664,MNAP@1:0.1664,NDCG@1:0.1664) [3.3 s] *
+INFO:root:Epoch 2     loss=0.4203 [38.7 s]    dev=(HR@1:0.1662,MNAP@1:0.1662,NDCG@1:0.1662) [3.2 s]
+INFO:root:Epoch 3     loss=0.3894 [38.3 s]    dev=(HR@1:0.1668,MNAP@1:0.1668,NDCG@1:0.1668) [3.2 s] *
+INFO:root:Epoch 4     loss=0.3621 [41.6 s]    dev=(HR@1:0.1655,MNAP@1:0.1655,NDCG@1:0.1655) [4.0 s]
+INFO:root:Epoch 5     loss=0.3392 [43.1 s]    dev=(HR@1:0.1658,MNAP@1:0.1658,NDCG@1:0.1658) [3.9 s]
+INFO:root:Epoch 6     loss=0.3238 [42.8 s]    dev=(HR@1:0.1696,MNAP@1:0.1696,NDCG@1:0.1696) [4.0 s] *
+INFO:root:Epoch 7     loss=0.3095 [43.1 s]    dev=(HR@1:0.1634,MNAP@1:0.1634,NDCG@1:0.1634) [4.1 s]
+INFO:root:Epoch 8     loss=0.2978 [43.2 s]    dev=(HR@1:0.1663,MNAP@1:0.1663,NDCG@1:0.1663) [4.0 s]
+INFO:root:Epoch 9     loss=0.2844 [40.3 s]    dev=(HR@1:0.1670,MNAP@1:0.1670,NDCG@1:0.1670) [4.0 s]
+INFO:root:Epoch 10    loss=0.2785 [40.5 s]    dev=(HR@1:0.1658,MNAP@1:0.1658,NDCG@1:0.1658) [3.8 s]
+INFO:root:Epoch 11    loss=0.2692 [40.6 s]    dev=(HR@1:0.1664,MNAP@1:0.1664,NDCG@1:0.1664) [3.9 s]
+INFO:root:Epoch 12    loss=0.2617 [40.1 s]    dev=(HR@1:0.1580,MNAP@1:0.1580,NDCG@1:0.1580) [3.8 s]
+INFO:root:Epoch 13    loss=0.2537 [40.3 s]    dev=(HR@1:0.1583,MNAP@1:0.1583,NDCG@1:0.1583) [4.1 s]
+INFO:root:Epoch 14    loss=0.2448 [41.7 s]    dev=(HR@1:0.1532,MNAP@1:0.1532,NDCG@1:0.1532) [3.8 s]
+INFO:root:Epoch 15    loss=0.2389 [43.3 s]    dev=(HR@1:0.1542,MNAP@1:0.1542,NDCG@1:0.1542) [4.0 s]
+INFO:root:Epoch 16    loss=0.2339 [42.3 s]    dev=(HR@1:0.1522,MNAP@1:0.1522,NDCG@1:0.1522) [3.9 s]
+INFO:root:Epoch 17    loss=0.2252 [39.7 s]    dev=(HR@1:0.1467,MNAP@1:0.1467,NDCG@1:0.1467) [3.9 s]
+INFO:root:Epoch 18    loss=0.2236 [39.9 s]    dev=(HR@1:0.1457,MNAP@1:0.1457,NDCG@1:0.1457) [3.9 s]
+INFO:root:Epoch 19    loss=0.2162 [41.2 s]    dev=(HR@1:0.1492,MNAP@1:0.1492,NDCG@1:0.1492) [3.8 s]
+INFO:root:Epoch 20    loss=0.2118 [39.6 s]    dev=(HR@1:0.1475,MNAP@1:0.1475,NDCG@1:0.1475) [3.7 s]
+INFO:root:Epoch 21    loss=0.2106 [42.9 s]    dev=(HR@1:0.1412,MNAP@1:0.1412,NDCG@1:0.1412) [3.7 s]
+INFO:root:Epoch 22    loss=0.2088 [41.8 s]    dev=(HR@1:0.1459,MNAP@1:0.1459,NDCG@1:0.1459) [3.6 s]
+INFO:root:Epoch 23    loss=0.2056 [42.1 s]    dev=(HR@1:0.1500,MNAP@1:0.1500,NDCG@1:0.1500) [3.8 s]
+INFO:root:Epoch 24    loss=0.2048 [38.3 s]    dev=(HR@1:0.1390,MNAP@1:0.1390,NDCG@1:0.1390) [3.6 s]
+INFO:root:Epoch 25    loss=0.2003 [38.4 s]    dev=(HR@1:0.1397,MNAP@1:0.1397,NDCG@1:0.1397) [3.3 s]
+INFO:root:Epoch 26    loss=0.1980 [35.3 s]    dev=(HR@1:0.1354,MNAP@1:0.1354,NDCG@1:0.1354) [3.1 s]
+INFO:root:Early stop at 26 based on dev result.
+INFO:root:
+Best Iter(dev)=    6	 dev=(HR@1:0.1696,MNAP@1:0.1696,NDCG@1:0.1696) [1150.9 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__amazon_electronics1__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=weekday.pt
+INFO:root:
+Test After Training: (HR@1:0.1564,MNAP@1:0.1564,NDCG@1:0.1564,HR@5:0.3462,MNAP@5:0.2245,NDCG@5:0.2547,HR@10:0.4472,MNAP@10:0.2380,NDCG@10:0.2874,HR@15:0.5153,MNAP@15:0.2433,NDCG@15:0.3054,HR@20:0.5676,MNAP@20:0.2463,NDCG@20:0.3177)
+INFO:root:
+--------------------------------------------- END: 2022-05-07 09:21:12 ---------------------------------------------

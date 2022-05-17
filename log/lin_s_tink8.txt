@@ -1,0 +1,98 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 19:53:14 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | tinkoff     
+ diff            | 1           
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 200         
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time            | 0           
+ time_diffs      | 0           
+ time_features   |             
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Reading data from "../data/", dataset = "tinkoff" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 94587, "# item": 2957, "# entry": 537677
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../BaseReader.pkl
+INFO:root:#params: 215936
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2958, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+  (lin): Linear(in_features=65, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2166 [122.0 s]    dev=(HR@1:0.1604,MNAP@1:0.1604,NDCG@1:0.1604) [3.6 s] *
+INFO:root:Epoch 2     loss=0.1207 [121.9 s]    dev=(HR@1:0.1631,MNAP@1:0.1631,NDCG@1:0.1631) [4.2 s] *
+INFO:root:Epoch 3     loss=0.1150 [121.8 s]    dev=(HR@1:0.1575,MNAP@1:0.1575,NDCG@1:0.1575) [4.8 s]
+INFO:root:Epoch 4     loss=0.1137 [122.1 s]    dev=(HR@1:0.1605,MNAP@1:0.1605,NDCG@1:0.1605) [3.7 s]
+INFO:root:Epoch 5     loss=0.1133 [123.1 s]    dev=(HR@1:0.1628,MNAP@1:0.1628,NDCG@1:0.1628) [3.6 s]
+INFO:root:Epoch 6     loss=0.1118 [122.0 s]    dev=(HR@1:0.1628,MNAP@1:0.1628,NDCG@1:0.1628) [3.5 s]
+INFO:root:Epoch 7     loss=0.1117 [121.4 s]    dev=(HR@1:0.1598,MNAP@1:0.1598,NDCG@1:0.1598) [3.8 s]
+INFO:root:Epoch 8     loss=0.1117 [120.8 s]    dev=(HR@1:0.1617,MNAP@1:0.1617,NDCG@1:0.1617) [3.7 s]
+INFO:root:Epoch 9     loss=0.1123 [120.8 s]    dev=(HR@1:0.1631,MNAP@1:0.1631,NDCG@1:0.1631) [3.8 s] *
+INFO:root:Epoch 10    loss=0.1116 [122.2 s]    dev=(HR@1:0.1661,MNAP@1:0.1661,NDCG@1:0.1661) [4.6 s] *
+INFO:root:Epoch 11    loss=0.1113 [123.7 s]    dev=(HR@1:0.1664,MNAP@1:0.1664,NDCG@1:0.1664) [3.6 s] *
+INFO:root:Epoch 12    loss=0.1123 [124.3 s]    dev=(HR@1:0.1612,MNAP@1:0.1612,NDCG@1:0.1612) [3.6 s]
+INFO:root:Epoch 13    loss=0.1114 [125.5 s]    dev=(HR@1:0.1638,MNAP@1:0.1638,NDCG@1:0.1638) [3.7 s]
+INFO:root:Epoch 14    loss=0.1112 [125.6 s]    dev=(HR@1:0.1612,MNAP@1:0.1612,NDCG@1:0.1612) [3.7 s]
+INFO:root:Epoch 15    loss=0.1106 [125.5 s]    dev=(HR@1:0.1629,MNAP@1:0.1629,NDCG@1:0.1629) [4.4 s]
+INFO:root:Epoch 16    loss=0.1108 [126.1 s]    dev=(HR@1:0.1605,MNAP@1:0.1605,NDCG@1:0.1605) [3.7 s]
+INFO:root:Epoch 17    loss=0.1113 [124.9 s]    dev=(HR@1:0.1600,MNAP@1:0.1600,NDCG@1:0.1600) [3.5 s]
+INFO:root:Epoch 18    loss=0.1105 [126.6 s]    dev=(HR@1:0.1629,MNAP@1:0.1629,NDCG@1:0.1629) [4.7 s]
+INFO:root:Epoch 19    loss=0.1119 [127.3 s]    dev=(HR@1:0.1621,MNAP@1:0.1621,NDCG@1:0.1621) [3.5 s]
+INFO:root:Epoch 20    loss=0.1105 [126.7 s]    dev=(HR@1:0.1646,MNAP@1:0.1646,NDCG@1:0.1646) [3.7 s]
+INFO:root:Epoch 21    loss=0.1114 [123.1 s]    dev=(HR@1:0.1587,MNAP@1:0.1587,NDCG@1:0.1587) [3.8 s]
+INFO:root:Epoch 22    loss=0.1115 [121.6 s]    dev=(HR@1:0.1568,MNAP@1:0.1568,NDCG@1:0.1568) [3.8 s]
+INFO:root:Epoch 23    loss=0.1103 [120.6 s]    dev=(HR@1:0.1607,MNAP@1:0.1607,NDCG@1:0.1607) [3.7 s]
+INFO:root:Epoch 24    loss=0.1103 [121.9 s]    dev=(HR@1:0.1607,MNAP@1:0.1607,NDCG@1:0.1607) [3.6 s]
+INFO:root:Epoch 25    loss=0.1109 [122.0 s]    dev=(HR@1:0.1612,MNAP@1:0.1612,NDCG@1:0.1612) [3.8 s]
+INFO:root:Epoch 26    loss=0.1110 [122.1 s]    dev=(HR@1:0.1616,MNAP@1:0.1616,NDCG@1:0.1616) [4.4 s]
+INFO:root:Epoch 27    loss=0.1116 [120.2 s]    dev=(HR@1:0.1638,MNAP@1:0.1638,NDCG@1:0.1638) [3.6 s]
+INFO:root:Epoch 28    loss=0.1109 [121.7 s]    dev=(HR@1:0.1585,MNAP@1:0.1585,NDCG@1:0.1585) [3.8 s]
+INFO:root:Epoch 29    loss=0.1106 [121.6 s]    dev=(HR@1:0.1622,MNAP@1:0.1622,NDCG@1:0.1622) [3.8 s]
+INFO:root:Epoch 30    loss=0.1117 [121.3 s]    dev=(HR@1:0.1632,MNAP@1:0.1632,NDCG@1:0.1632) [3.7 s]
+INFO:root:Epoch 31    loss=0.1102 [119.9 s]    dev=(HR@1:0.1629,MNAP@1:0.1629,NDCG@1:0.1629) [3.5 s]
+INFO:root:Early stop at 31 based on dev result.
+INFO:root:
+Best Iter(dev)=   11	 dev=(HR@1:0.1664,MNAP@1:0.1664,NDCG@1:0.1664) [3929.1 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__tinkoff__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:0.1514,MNAP@1:0.1514,NDCG@1:0.1514,HR@5:0.3936,MNAP@5:0.2351,NDCG@5:0.2742,HR@10:0.5436,MNAP@10:0.2556,NDCG@10:0.3232,HR@15:0.6129,MNAP@15:0.2610,NDCG@15:0.3415,HR@20:0.6747,MNAP@20:0.2645,NDCG@20:0.3561)
+INFO:root:
+--------------------------------------------- END: 2022-05-10 20:59:23 ---------------------------------------------

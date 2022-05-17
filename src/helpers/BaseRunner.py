@@ -72,7 +72,7 @@ class BaseRunner(object):
                     evaluations[key] = 0
                     for i in range(1, k+1):
                         hit1 = (gt_rank <= i)
-                        evaluations[key] += np.sum(hit1 / i)
+                        evaluations[key] += np.sum((hit1 / i)*(gt_rank==i))
                     evaluations[key] /= len(predictions)
                 else:
                     raise ValueError('Undefined evaluation metric: {}.'.format(metric))

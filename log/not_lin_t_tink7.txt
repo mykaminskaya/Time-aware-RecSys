@@ -1,0 +1,244 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 23:19:29 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | tinkoff     
+ diff            | 0           
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 200         
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time            | 1           
+ time_diffs      | 0           
+ time_features   |             
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Reading data from "../data/", dataset = "tinkoff" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 94587, "# item": 2957, "# entry": 537677
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../BaseReader.pkl
+INFO:root:#params: 280311
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(2958, 64)
+  (p_k_embeddings): Embedding(21, 65)
+  (p_v_embeddings): Embedding(21, 65)
+  (t_k_embeddings): Embedding(513, 65)
+  (t_v_embeddings): Embedding(513, 65)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 23:24:37 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | tinkoff     
+ diff            | 0           
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 200         
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time            | 1           
+ time_diffs      | 0           
+ time_features   |             
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Reading data from "../data/", dataset = "tinkoff" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 94587, "# item": 2957, "# entry": 537677
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../BaseReader.pkl
+INFO:root:#params: 280311
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(2958, 64)
+  (p_k_embeddings): Embedding(21, 65)
+  (p_v_embeddings): Embedding(21, 65)
+  (t_k_embeddings): Embedding(513, 65)
+  (t_v_embeddings): Embedding(513, 65)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [189.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.1 s] *
+INFO:root:Epoch 2     loss=0.6931 [199.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.1 s] *
+INFO:root:Epoch 3     loss=0.6931 [199.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.9 s] *
+INFO:root:Epoch 4     loss=nan [204.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.2 s] *
+INFO:root:Epoch 5     loss=nan [202.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.7 s] *
+INFO:root:Epoch 6     loss=nan [192.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.7 s] *
+INFO:root:Epoch 7     loss=nan [187.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 8     loss=nan [181.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 9     loss=nan [181.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 10    loss=nan [180.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.5 s] *
+INFO:root:Epoch 11    loss=nan [182.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.6 s] *
+INFO:root:Epoch 12    loss=nan [191.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.1 s] *
+INFO:root:Epoch 13    loss=nan [207.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.2 s] *
+INFO:root:Epoch 14    loss=nan [204.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.2 s] *
+INFO:root:Epoch 15    loss=nan [200.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.1 s] *
+INFO:root:Epoch 16    loss=nan [199.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.1 s] *
+INFO:root:Epoch 17    loss=nan [201.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.2 s] *
+INFO:root:Epoch 18    loss=nan [198.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [5.0 s] *
+INFO:root:Epoch 19    loss=nan [197.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.9 s] *
+INFO:root:Epoch 20    loss=nan [191.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.8 s] *
+INFO:root:Epoch 21    loss=nan [192.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.9 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4186.8 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__tinkoff__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 00:34:53 ---------------------------------------------
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-11 06:41:49 ---------------------------------------------
+INFO:root:
+================================
+ Arguments       | Values       
+================================
+ batch_size      | 256         
+ continuous_time | 0           
+ dataset         | tinkoff     
+ diff            | 0           
+ dropout         | 0           
+ early_stop      | 10          
+ emb_size        | 64          
+ epoch           | 200         
+ eval_batch_size | 256         
+ gpu             | 0           
+ history_max     | 20          
+ l2              | 1e-06       
+ lr              | 0.0001      
+ num_heads       | 1           
+ num_layers      | 1           
+ num_neg         | 1           
+ num_workers     | 5           
+ optimizer       | Adam        
+ random_seed     | 0           
+ test_all        | 0           
+ time            | 1           
+ time_diffs      | 0           
+ time_features   |             
+ time_max        | 512         
+ topk            | 1,5,10,15,20
+================================
+INFO:root:GPU available: False
+INFO:root:Reading data from "../data/", dataset = "tinkoff" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 94587, "# item": 2957, "# entry": 537677
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../BaseReader.pkl
+INFO:root:#params: 280311
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(2958, 64)
+  (p_k_embeddings): Embedding(21, 65)
+  (p_v_embeddings): Embedding(21, 65)
+  (t_k_embeddings): Embedding(513, 65)
+  (t_v_embeddings): Embedding(513, 65)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [192.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.5 s] *
+INFO:root:Epoch 2     loss=0.6931 [191.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.1 s] *
+INFO:root:Epoch 3     loss=0.6931 [191.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 4     loss=nan [194.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.1 s] *
+INFO:root:Epoch 5     loss=nan [192.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.6 s] *
+INFO:root:Epoch 6     loss=nan [188.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 7     loss=nan [190.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 8     loss=nan [191.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 9     loss=nan [191.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.4 s] *
+INFO:root:Epoch 10    loss=nan [191.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.1 s] *
+INFO:root:Epoch 11    loss=nan [192.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 12    loss=nan [194.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.6 s] *
+INFO:root:Epoch 13    loss=nan [195.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.5 s] *
+INFO:root:Epoch 14    loss=nan [190.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.6 s] *
+INFO:root:Epoch 15    loss=nan [190.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 16    loss=nan [189.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.5 s] *
+INFO:root:Epoch 17    loss=nan [190.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 18    loss=nan [191.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.4 s] *
+INFO:root:Epoch 19    loss=nan [190.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.2 s] *
+INFO:root:Epoch 20    loss=nan [189.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.3 s] *
+INFO:root:Epoch 21    loss=nan [190.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4.5 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [4113.2 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec__tinkoff__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1__time_max=512.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 07:50:53 ---------------------------------------------

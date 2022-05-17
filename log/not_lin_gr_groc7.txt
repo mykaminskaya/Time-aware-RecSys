@@ -1,0 +1,68 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-11 06:34:07 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ diff            | 0                   
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ hidden_size     | 100                 
+ history_max     | 20                  
+ l2              | 0.0001              
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time            | 1                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 614361
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(65, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=65, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6893 [28.1 s]    dev=(HR@1:0.2576,MNAP@1:0.2576,NDCG@1:0.2576) [2.4 s] *
+INFO:root:Epoch 2     loss=0.7903 [27.9 s]    dev=(HR@1:0.0978,MNAP@1:0.0978,NDCG@1:0.0978) [2.6 s]
+INFO:root:Epoch 3     loss=0.8186 [27.9 s]    dev=(HR@1:0.1300,MNAP@1:0.1300,NDCG@1:0.1300) [2.6 s]
+INFO:root:Epoch 4     loss=0.8353 [34.4 s]    dev=(HR@1:0.1172,MNAP@1:0.1172,NDCG@1:0.1172) [5.3 s]
+INFO:root:Epoch 5     loss=0.8371 [48.9 s]    dev=(HR@1:0.0935,MNAP@1:0.0935,NDCG@1:0.0935) [5.2 s]
+INFO:root:Epoch 6     loss=0.8415 [48.8 s]    dev=(HR@1:0.1379,MNAP@1:0.1379,NDCG@1:0.1379) [5.0 s]
+INFO:root:Epoch 7     loss=0.8364 [48.2 s]    dev=(HR@1:0.1234,MNAP@1:0.1234,NDCG@1:0.1234) [5.1 s]
+INFO:root:Epoch 8     loss=0.8185 [48.3 s]    dev=(HR@1:0.1145,MNAP@1:0.1145,NDCG@1:0.1145) [4.9 s]
+INFO:root:Epoch 9     loss=0.8220 [47.9 s]    dev=(HR@1:0.1008,MNAP@1:0.1008,NDCG@1:0.1008) [4.9 s]
+INFO:root:Epoch 10    loss=0.7950 [48.4 s]    dev=(HR@1:0.1002,MNAP@1:0.1002,NDCG@1:0.1002) [5.0 s]
+INFO:root:Epoch 11    loss=0.7666 [48.0 s]    dev=(HR@1:0.0988,MNAP@1:0.0988,NDCG@1:0.0988) [5.1 s]
+INFO:root:Epoch 12    loss=0.7410 [48.6 s]    dev=(HR@1:0.0998,MNAP@1:0.0998,NDCG@1:0.0998) [4.9 s]
+INFO:root:Epoch 13    loss=0.7048 [48.7 s]    dev=(HR@1:0.0752,MNAP@1:0.0752,NDCG@1:0.0752) [5.2 s]
+INFO:root:Epoch 14    loss=0.6604 [48.3 s]    dev=(HR@1:0.1210,MNAP@1:0.1210,NDCG@1:0.1210) [5.2 s]
+INFO:root:Epoch 15    loss=0.6268 [53.4 s]    dev=(HR@1:0.0819,MNAP@1:0.0819,NDCG@1:0.0819) [5.5 s]
+INFO:root:Epoch 16    loss=0.5879 [51.1 s]    dev=(HR@1:0.0956,MNAP@1:0.0956,NDCG@1:0.0956) [5.3 s]
+INFO:root:Epoch 17    loss=0.5754 [50.9 s]    dev=(HR@1:0.1050,MNAP@1:0.1050,NDCG@1:0.1050) [5.4 s]
+INFO:root:Epoch 18    loss=0.5506 [48.8 s]    dev=(HR@1:0.1377,MNAP@1:0.1377,NDCG@1:0.1377) [5.2 s]
+INFO:root:Epoch 19    loss=0.5335 [48.8 s]    dev=(HR@1:0.1267,MNAP@1:0.1267,NDCG@1:0.1267) [5.2 s]
+INFO:root:Epoch 20    loss=0.5228 [49.0 s]    dev=(HR@1:0.1281,MNAP@1:0.1281,NDCG@1:0.1281) [5.1 s]
+INFO:root:Epoch 21    loss=0.5061 [48.6 s]    dev=(HR@1:0.1856,MNAP@1:0.1856,NDCG@1:0.1856) [5.1 s]
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:0.2576,MNAP@1:0.2576,NDCG@1:0.2576) [1053.2 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec__Grocery_and_Gourmet_Food1__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100__time_features=.pt
+INFO:root:
+Test After Training: (HR@1:0.2201,MNAP@1:0.2201,NDCG@1:0.2201,HR@5:0.2397,MNAP@5:0.2248,NDCG@5:0.2284,HR@10:0.3624,MNAP@10:0.2400,NDCG@10:0.2669,HR@15:0.4666,MNAP@15:0.2481,NDCG@15:0.2943,HR@20:0.5854,MNAP@20:0.2550,NDCG@20:0.3226)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 06:51:45 ---------------------------------------------

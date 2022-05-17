@@ -1,0 +1,249 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 23:40:59 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ diff            | 0                   
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time            | 1                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 580619
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [23.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 2     loss=0.6931 [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 3     loss=0.6931 [23.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 4     loss=0.6931 [23.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 5     loss=0.6931 [23.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 6     loss=0.6931 [24.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 7     loss=0.6931 [24.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 8     loss=0.6931 [24.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 9     loss=0.6931 [24.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 10    loss=0.6931 [24.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 11    loss=0.6931 [24.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 12    loss=0.6931 [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.0 s] *
+INFO:root:Epoch 13    loss=0.6931 [25.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 14    loss=nan [24.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 15    loss=nan [24.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 16    loss=nan [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 17    loss=nan [24.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 18    loss=nan [23.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 19    loss=nan [24.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.0 s] *
+INFO:root:Epoch 20    loss=nan [25.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 21    loss=nan [24.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.8 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [563.5 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-10 23:50:27 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-11 00:03:48 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ diff            | 0                   
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time            | 1                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 580619
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [24.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 2     loss=0.6931 [25.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.8 s] *
+INFO:root:Epoch 3     loss=0.6931 [26.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 4     loss=0.6931 [24.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 5     loss=0.6931 [26.3 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 6     loss=0.6931 [24.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.2 s] *
+INFO:root:Epoch 7     loss=0.6931 [24.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 8     loss=0.6931 [25.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 9     loss=0.6931 [24.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 10    loss=0.6931 [25.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.9 s] *
+INFO:root:Epoch 11    loss=0.6931 [25.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 12    loss=0.6931 [24.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [3.5 s] *
+INFO:root:Epoch 13    loss=0.6931 [24.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 14    loss=nan [25.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 15    loss=nan [24.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 16    loss=nan [25.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 17    loss=nan [24.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.8 s] *
+INFO:root:Epoch 18    loss=nan [24.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 19    loss=nan [25.4 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.2 s] *
+INFO:root:Epoch 20    loss=nan [24.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 21    loss=nan [26.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [581.8 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 00:13:34 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-11 07:15:29 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ continuous_time | 0                   
+ dataset         | Grocery_and_Gourm...
+ diff            | 0                   
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.0001              
+ num_heads       | 1                   
+ num_layers      | 1                   
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ time            | 1                   
+ time_diffs      | 0                   
+ time_features   |                     
+ topk            | 1,5,10,15,20        
+========================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food1/BaseReader.pkl
+INFO:root:#params: 580619
+INFO:root:SASRec(
+  (i_embeddings): Embedding(8714, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=65, out_features=65, bias=True)
+        (k_linear): Linear(in_features=65, out_features=65, bias=True)
+        (v_linear): Linear(in_features=65, out_features=65, bias=True)
+      )
+      (layer_norm1): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=65, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=65, bias=True)
+      (layer_norm2): LayerNorm((65,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6931 [22.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 2     loss=0.6931 [23.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 3     loss=0.6931 [23.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 4     loss=0.6931 [23.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 5     loss=0.6931 [23.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 6     loss=0.6931 [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 7     loss=0.6931 [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 8     loss=0.6931 [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 9     loss=0.6931 [24.1 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 10    loss=0.6931 [23.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 11    loss=0.6931 [23.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 12    loss=0.6931 [23.8 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.3 s] *
+INFO:root:Epoch 13    loss=0.6931 [23.7 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.7 s] *
+INFO:root:Epoch 14    loss=nan [23.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 15    loss=nan [23.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 16    loss=nan [23.5 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 17    loss=nan [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.4 s] *
+INFO:root:Epoch 18    loss=nan [24.2 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 19    loss=nan [23.9 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.6 s] *
+INFO:root:Epoch 20    loss=nan [24.6 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Epoch 21    loss=nan [24.0 s]    dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [2.5 s] *
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=    1	 dev=(HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000) [550.8 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__Grocery_and_Gourmet_Food1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:1.0000,MNAP@1:1.0000,NDCG@1:1.0000,HR@5:1.0000,MNAP@5:1.0000,NDCG@5:1.0000,HR@10:1.0000,MNAP@10:1.0000,NDCG@10:1.0000,HR@15:1.0000,MNAP@15:1.0000,NDCG@15:1.0000,HR@20:1.0000,MNAP@20:1.0000,NDCG@20:1.0000)
+INFO:root:
+--------------------------------------------- END: 2022-05-11 07:24:45 ---------------------------------------------

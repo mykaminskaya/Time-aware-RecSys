@@ -1,0 +1,85 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2022-05-10 13:41:59 ---------------------------------------------
+INFO:root:
+=======================================
+ Arguments       | Values              
+=======================================
+ batch_size      | 256                
+ continuous_time | 0                  
+ dataset         | amazon_electronics1
+ dropout         | 0                  
+ early_stop      | 10                 
+ emb_size        | 64                 
+ epoch           | 200                
+ eval_batch_size | 256                
+ gpu             | 0                  
+ history_max     | 20                 
+ l2              | 1e-06              
+ lr              | 0.0001             
+ num_heads       | 1                  
+ num_layers      | 1                  
+ num_neg         | 1                  
+ num_workers     | 5                  
+ optimizer       | Adam               
+ random_seed     | 0                  
+ test_all        | 0                  
+ time_diffs      | 0                  
+ time_features   | month              
+ topk            | 1,5,10,15,20       
+=======================================
+INFO:root:GPU available: False
+INFO:root:Load corpus from ../data/amazon_electronics1/BaseReader.pkl
+INFO:root:#params: 4100736
+INFO:root:SASRec(
+  (i_embeddings): Embedding(63000, 64)
+  (p_embeddings): Embedding(21, 64)
+  (months_embeddings): Embedding(12, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=128, out_features=128, bias=True)
+        (k_linear): Linear(in_features=128, out_features=128, bias=True)
+        (v_linear): Linear(in_features=128, out_features=128, bias=True)
+      )
+      (layer_norm1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=128, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=128, bias=True)
+      (layer_norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.6405 [44.6 s]    dev=(HR@1:0.1744,MNAP@1:0.1744,NDCG@1:0.1744) [3.7 s] *
+INFO:root:Epoch 2     loss=0.5120 [43.4 s]    dev=(HR@1:0.1816,MNAP@1:0.1816,NDCG@1:0.1816) [3.7 s] *
+INFO:root:Epoch 3     loss=0.4324 [43.6 s]    dev=(HR@1:0.1847,MNAP@1:0.1847,NDCG@1:0.1847) [3.7 s] *
+INFO:root:Epoch 4     loss=0.3829 [43.7 s]    dev=(HR@1:0.1849,MNAP@1:0.1849,NDCG@1:0.1849) [3.7 s] *
+INFO:root:Epoch 5     loss=0.3487 [43.4 s]    dev=(HR@1:0.1835,MNAP@1:0.1835,NDCG@1:0.1835) [3.6 s]
+INFO:root:Epoch 6     loss=0.3225 [43.8 s]    dev=(HR@1:0.1837,MNAP@1:0.1837,NDCG@1:0.1837) [3.7 s]
+INFO:root:Epoch 7     loss=0.2983 [43.2 s]    dev=(HR@1:0.1842,MNAP@1:0.1842,NDCG@1:0.1842) [3.8 s]
+INFO:root:Epoch 8     loss=0.2785 [43.5 s]    dev=(HR@1:0.1824,MNAP@1:0.1824,NDCG@1:0.1824) [3.7 s]
+INFO:root:Epoch 9     loss=0.2559 [43.5 s]    dev=(HR@1:0.1836,MNAP@1:0.1836,NDCG@1:0.1836) [3.7 s]
+INFO:root:Epoch 10    loss=0.2388 [43.9 s]    dev=(HR@1:0.1835,MNAP@1:0.1835,NDCG@1:0.1835) [3.7 s]
+INFO:root:Epoch 11    loss=0.2221 [44.5 s]    dev=(HR@1:0.1837,MNAP@1:0.1837,NDCG@1:0.1837) [3.6 s]
+INFO:root:Epoch 12    loss=0.2061 [43.8 s]    dev=(HR@1:0.1831,MNAP@1:0.1831,NDCG@1:0.1831) [3.6 s]
+INFO:root:Epoch 13    loss=0.1911 [43.4 s]    dev=(HR@1:0.1821,MNAP@1:0.1821,NDCG@1:0.1821) [3.7 s]
+INFO:root:Epoch 14    loss=0.1765 [44.1 s]    dev=(HR@1:0.1845,MNAP@1:0.1845,NDCG@1:0.1845) [3.7 s]
+INFO:root:Epoch 15    loss=0.1645 [44.2 s]    dev=(HR@1:0.1848,MNAP@1:0.1848,NDCG@1:0.1848) [3.7 s]
+INFO:root:Epoch 16    loss=0.1525 [43.5 s]    dev=(HR@1:0.1833,MNAP@1:0.1833,NDCG@1:0.1833) [3.7 s]
+INFO:root:Epoch 17    loss=0.1410 [43.9 s]    dev=(HR@1:0.1836,MNAP@1:0.1836,NDCG@1:0.1836) [3.7 s]
+INFO:root:Epoch 18    loss=0.1315 [44.4 s]    dev=(HR@1:0.1829,MNAP@1:0.1829,NDCG@1:0.1829) [3.7 s]
+INFO:root:Epoch 19    loss=0.1212 [44.2 s]    dev=(HR@1:0.1804,MNAP@1:0.1804,NDCG@1:0.1804) [3.7 s]
+INFO:root:Epoch 20    loss=0.1131 [44.4 s]    dev=(HR@1:0.1814,MNAP@1:0.1814,NDCG@1:0.1814) [3.7 s]
+INFO:root:Epoch 21    loss=0.1050 [44.3 s]    dev=(HR@1:0.1805,MNAP@1:0.1805,NDCG@1:0.1805) [3.6 s]
+INFO:root:Epoch 22    loss=0.0959 [44.5 s]    dev=(HR@1:0.1821,MNAP@1:0.1821,NDCG@1:0.1821) [3.7 s]
+INFO:root:Epoch 23    loss=0.0897 [41.7 s]    dev=(HR@1:0.1788,MNAP@1:0.1788,NDCG@1:0.1788) [3.4 s]
+INFO:root:Epoch 24    loss=0.0831 [39.2 s]    dev=(HR@1:0.1794,MNAP@1:0.1794,NDCG@1:0.1794) [3.3 s]
+INFO:root:Early stop at 24 based on dev result.
+INFO:root:
+Best Iter(dev)=    4	 dev=(HR@1:0.1849,MNAP@1:0.1849,NDCG@1:0.1849) [1134.5 s] 
+INFO:root:Load model from ../model/SASRec/SASRec__amazon_electronics1__0__lr=0.0001__l2=1e-06__emb_size=64__num_layers=1__num_heads=1.pt
+INFO:root:
+Test After Training: (HR@1:0.1651,MNAP@1:0.1651,NDCG@1:0.1651,HR@5:0.3586,MNAP@5:0.2345,NDCG@5:0.2653,HR@10:0.4612,MNAP@10:0.2481,NDCG@10:0.2984,HR@15:0.5264,MNAP@15:0.2532,NDCG@15:0.3156,HR@20:0.5753,MNAP@20:0.2560,NDCG@20:0.3272)
+INFO:root:
+--------------------------------------------- END: 2022-05-10 14:01:00 ---------------------------------------------

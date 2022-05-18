@@ -72,7 +72,9 @@ class SASRec(SequentialModel):
         self.sz1 = self.emb_size*(len(self.time_features)*int(bool(self.disc_method))+1)+(self.norm_timestamps+self.norm_diffs+self.clear_timestamps+self.clear_diffs)
 
         for f in self.time_features:
-            if f == 'MONTH':
+            if f == 'HOUR':
+                self.hours_embeddings = nn.Embedding(24, self.emb_size)
+            elif f == 'MONTH':
                 self.months_embeddings = nn.Embedding(12, self.emb_size)
             elif f == 'DAY':
                 self.days_embeddings = nn.Embedding(31, self.emb_size)
@@ -95,6 +97,7 @@ class SASRec(SequentialModel):
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
         lengths = feed_dict['lengths']  # [batch_size]
+        hours = feed_dict['hours_vectors']
         days = feed_dict['history_days']
         months = feed_dict['history_months']
         weekdays = feed_dict['history_weekdays']
@@ -139,6 +142,17 @@ class SASRec(SequentialModel):
                     d = torch.tensor(np.tile(feed_dict['days'].cpu(), (i_vectors.shape[1], 1)).transpose()).to(self.device)
                     d = self.days_embeddings(d)
                     i_vectors = torch.cat((i_vectors, d), 2)
+            elif f == 'HOUR':
+                hours_vectors = self.hours_embeddings(hours)
+                if self.disc_method > 0:
+                    his_vectors = torch.cat((his_vectors, hours_vectors), 2)
+                else:
+                    his_vectors = his_vectors + hours_vectors
+
+                if self.disc_method == 2:
+                    d = torch.tensor(np.tile(feed_dict['hours'].cpu(), (pred_vectors.shape[1], 1)).transpose()).to(self.device)
+                    d = self.hours_embeddings(d)
+                    pred_vectors = torch.cat((pred_vectors, d), 2)
             elif f == 'WEEKDAY':
                 weekdays_vectors = self.weekdays_embeddings(weekdays)
                 if self.disc_method > 0:

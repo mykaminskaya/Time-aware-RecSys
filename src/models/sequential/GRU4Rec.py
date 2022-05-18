@@ -84,6 +84,7 @@ class GRU4Rec(SequentialModel):
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
         lengths = feed_dict['lengths']
+        hours = feed_dict['history_hours']
         days = feed_dict['history_days']
         months = feed_dict['history_months']
         weekdays = feed_dict['history_weekdays']
@@ -116,6 +117,17 @@ class GRU4Rec(SequentialModel):
                 if self.disc_method == 2:
                     d = torch.tensor(np.tile(feed_dict['days'].cpu(), (pred_vectors.shape[1], 1)).transpose()).to(self.device)
                     d = self.days_embeddings(d)
+                    pred_vectors = torch.cat((pred_vectors, d), 2)
+            elif f == 'HOUR':
+                hours_vectors = self.hours_embeddings(hours)
+                if self.disc_method > 0:
+                    his_vectors = torch.cat((his_vectors, hours_vectors), 2)
+                else:
+                    his_vectors = his_vectors + hours_vectors
+
+                if self.disc_method == 2:
+                    d = torch.tensor(np.tile(feed_dict['hours'].cpu(), (pred_vectors.shape[1], 1)).transpose()).to(self.device)
+                    d = self.hours_embeddings(d)
                     pred_vectors = torch.cat((pred_vectors, d), 2)
             elif f == 'WEEKDAY':
                 weekdays_vectors = self.weekdays_embeddings(weekdays)

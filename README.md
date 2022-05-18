@@ -4,6 +4,7 @@
 
 Репозиторий содержит библиотеку ReChorus с внесенными изменениями для учета временных признаков.
 Изменения внесены в модели [GRU4Rec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/GRU4Rec.py), [SASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/SASRec.py) и [TiSASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/TiSASRec.py)
+
 Добавлена возможность учета дискретных признаков (час, день, месяц и день недели интеракции) и непрерывных (нормализованные и ненормализованные таймстемпы интеракций и временные интервалы между соседними интеракциями каждого пользователя). Добавленные аргументы:
 
 | Args            | Default   | Description and possible values                              |

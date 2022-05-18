@@ -3,17 +3,17 @@
 ---
 
 Репозиторий содержит библиотеку ReChorus с внесенными изменениями для учета временных признаков.
-Изменения внесены в модели [GRU4Rec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/GRU4Rec.py), [SASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/SASRec.py) и [TiSASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/TiSASRec.py)
+Изменения внесены в модели [GRU4Rec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/GRU4Rec.py), [SASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/SASRec.py) и [TiSASRec](https://github.com/mykaminskaya/Time-aware-RecSys/blob/main/src/models/sequential/TiSASRec.py).
 
 Добавлена возможность учета дискретных признаков (час, день, месяц и день недели интеракции) и непрерывных (нормализованные и ненормализованные таймстемпы интеракций и временные интервалы между соседними интеракциями каждого пользователя). Добавленные аргументы:
 
 | Args            | Default   | Description and possible values                              |
 | --------------- | --------- | ------------------------------------------------------------ |
 | time_features   | ''        | Список дискретных признаков: hour, day, month, weekday                                                        |
-| norm_timestamps | 0         | Нормализованный таймстемп - 0 или 1                                                                           |
-| clear_timestamps| 0         | Ненормализованный таймстемп - 0 или 1                                                                         |
-| norm_diffs      | 0         | Нормализованный дифф - 0 или 1                                                                                |
-| clear_diffs     | 0         | Ненормализованный дифф - 0 или 1                                                                              |
+| norm_timestamps | 0         | Использование нормализованного таймстемпа - 0 или 1                                                           |
+| clear_timestamps| 0         | Использование ненормализованного таймстемпф - 0 или 1                                                         |
+| norm_diffs      | 0         | Использование нормализованного диффф - 0 или 1                                                                |
+| clear_diffs     | 0         | Использование ненормализованного диффа - 0 или 1                                                              |
 | disc_method     | 1         | Способ учета дискретных признаков: 0 - прибавление, 1 - дополнительный линейный слой, 2 - учет времени таргета|
 | cont_method     | 1         | Способ учета непрерывных призаков: 1 - дополнительный линейный слой, 2 - учет времени таргета                 |
 
